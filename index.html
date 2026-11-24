@@ -14,7 +14,7 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <link rel="icon" href="assets/logo_simbolo.png" type="image/png">
-  <link rel="stylesheet" href="styles.css?v=20261124">
+  <link rel="stylesheet" href="styles.css?v=20261124b">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -80,9 +80,23 @@
         <a href="#preguntas">Preguntas</a>
         <a href="#contacto">Contacto</a>
       </nav>
+      <button class="btn-buscar" type="button" id="btnBuscar" aria-label="Buscar en esta página" aria-keyshortcuts="Control+K">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10 2a8 8 0 1 0 4.9 14.3l5.4 5.4 1.4-1.4-5.4-5.4A8 8 0 0 0 10 2zm0 2a6 6 0 1 1 0 12 6 6 0 0 1 0-12z"/></svg>
+        Buscar <kbd>Ctrl K</kbd>
+      </button>
+      <span class="estado-agenda" id="estadoAgenda">Agenda por teléfono</span>
       <a class="btn btn-header" href="tel:7551234567">Agendar cita</a>
     </div>
   </header>
+
+  <div class="buscador" id="buscador" hidden>
+    <div class="buscador-panel" role="dialog" aria-modal="true" aria-label="Buscar en esta página">
+      <label class="sr-only" for="buscarEntrada">Buscar en la página</label>
+      <input id="buscarEntrada" type="search" placeholder="Servicio, pregunta o sección…" autocomplete="off">
+      <ul id="buscarResultados" aria-live="polite"></ul>
+      <p class="buscador-pista">Enter para abrir · Esc para cerrar</p>
+    </div>
+  </div>
 
   <main id="contenido">
 
@@ -228,6 +242,7 @@
           <span><i class="punto-teal" aria-hidden="true"></i> Teal: servicio disponible</span>
           <span><i class="punto-ambar" aria-hidden="true"></i> Ámbar: precio y duración</span>
           <a href="#tabla-precios">Ir a la tabla de precios ↓</a>
+          <button class="btn-imprimir" type="button" id="btnImprimir">Imprimir servicios</button>
         </p>
         <div class="tarjetas-servicios">
           <article class="tarjeta-servicio">
@@ -547,6 +562,11 @@
         <a href="#preguntas">Preguntas</a>
         <a href="#contacto">Contacto</a>
       </nav>
+      <div class="preferencias" role="group" aria-label="Preferencias de lectura">
+        <button type="button" id="btnTextoGrande" aria-pressed="false">Texto grande</button>
+        <button type="button" id="btnContraste" aria-pressed="false">Alto contraste</button>
+        <button type="button" id="btnRestablecer">Restablecer</button>
+      </div>
       <p class="copyright">Sistema de gestión de citas veterinarias GOVET</p>
     </div>
   </footer>
@@ -578,6 +598,6 @@
     <p class="aviso-noscript">El asistente necesita JavaScript. Mientras tanto, llámanos al
       <a href="tel:7551234567">755 123 4567</a> y registramos tu cita.</p>
   </noscript>
-  <script src="script.js?v=20261124"></script>
+  <script src="script.js?v=20261124b"></script>
 </body>
 </html>

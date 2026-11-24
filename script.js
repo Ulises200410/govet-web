@@ -104,8 +104,11 @@ function borrarProgreso() {
 // mientras tanto se usa el puente local de la propia máquina.
 fetch('bridge-config.json?v=' + Date.now(), { cache: 'no-store' })
   .then((respuesta) => respuesta.ok ? respuesta.json() : null)
-  .then((config) => { if (config && config.url) puentePublico = config.url.replace(/\/$/, ''); })
-  .catch(() => { puentePublico = ''; });
+  .then((config) => {
+    if (config && config.url) puentePublico = config.url.replace(/\/$/, '');
+    verificarAgenda();
+  })
+  .catch(() => { puentePublico = ''; verificarAgenda(); });
 
 function decir(texto, quien) {
   const burbuja = document.createElement('p');
@@ -585,4 +588,156 @@ if (filtroServicio && estadoFiltroServicios) {
       : visibles ? visibles + ' servicios coinciden con esa búsqueda.'
       : 'Ningún servicio coincide con esa búsqueda.';
   });
+}
+
+// Buscador de página: usa el texto que ya está en pantalla, sin servicios externos.
+const btnBuscar = document.getElementById('btnBuscar');
+const buscador = document.getElementById('buscador');
+const buscarEntrada = document.getElementById('buscarEntrada');
+const buscarResultados = document.getElementById('buscarResultados');
+
+const indiceBusqueda = Array.from(document.querySelectorAll(
+  'main h1, main h2, main h3, main h4, main summary, main .lista-datos li'
+)).map((elemento) => {
+  const texto = elemento.textContent.trim().replace(/\s+/g, ' ');
+  const seccion = elemento.closest('section');
+  return {
+    elemento,
+    texto: texto.length > 110 ? texto.slice(0, 110) + '…' : texto,
+    seccion: seccion ? (seccion.id || 'Inicio') : 'Inicio'
+  };
+}).filter((item) => item.texto.length > 3);
+
+let resultadosVisibles = [];
+let seleccionBusqueda = 0;
+
+function abrirResultado(indice) {
+  const item = resultadosVisibles[indice];
+  if (!item) return;
+  const caja = item.elemento.closest('details');
+  if (caja) caja.open = true;
+  buscador.hidden = true;
+  btnBuscar.focus();
+  item.elemento.scrollIntoView({ block: 'center', behavior: 'smooth' });
+}
+
+function pintarResultados(consulta) {
+  const q = consulta.trim().toLowerCase();
+  resultadosVisibles = !q ? [] : indiceBusqueda.filter((item) =>
+    item.texto.toLowerCase().includes(q) || item.seccion.toLowerCase().includes(q)
+  ).slice(0, 8);
+  seleccionBusqueda = 0;
+  buscarResultados.replaceChildren();
+  if (!q) return;
+  if (!resultadosVisibles.length) {
+    const aviso = document.createElement('li');
+    aviso.textContent = 'No hay coincidencias. Prueba con “precio”, “cita” o “WhatsApp”.';
+    aviso.style.color = 'var(--muted)';
+    buscarResultados.appendChild(aviso);
+    return;
+  }
+  resultadosVisibles.forEach((item, i) => {
+    const li = document.createElement('li');
+    const boton = document.createElement('button');
+    boton.type = 'button';
+    boton.textContent = item.texto;
+    const origen = document.createElement('small');
+    origen.textContent = item.seccion;
+    boton.appendChild(origen);
+    boton.addEventListener('click', () => abrirResultado(i));
+    if (i === 0) boton.classList.add('activo');
+    li.appendChild(boton);
+    buscarResultados.appendChild(li);
+  });
+}
+
+function abrirBuscador() {
+  buscador.hidden = false;
+  buscarEntrada.value = '';
+  pintarResultados('');
+  buscarEntrada.focus();
+}
+function cerrarBuscador() {
+  buscador.hidden = true;
+  btnBuscar.focus();
+}
+
+if (btnBuscar && buscador) {
+  btnBuscar.addEventListener('click', abrirBuscador);
+  buscarEntrada.addEventListener('input', () => pintarResultados(buscarEntrada.value));
+  buscador.addEventListener('click', (evento) => {
+    if (evento.target === buscador) cerrarBuscador();
+  });
+  document.addEventListener('keydown', (evento) => {
+    if ((evento.ctrlKey || evento.metaKey) && evento.key.toLowerCase() === 'k') {
+      evento.preventDefault();
+      if (buscador.hidden) abrirBuscador(); else cerrarBuscador();
+      return;
+    }
+    if (buscador.hidden) return;
+    if (evento.key === 'Escape') { evento.preventDefault(); cerrarBuscador(); }
+    if (evento.key === 'ArrowDown' || evento.key === 'ArrowUp') {
+      evento.preventDefault();
+      const botones = Array.from(buscarResultados.querySelectorAll('button'));
+      if (!botones.length) return;
+      seleccionBusqueda = (seleccionBusqueda + (evento.key === 'ArrowDown' ? 1 : -1) + botones.length) % botones.length;
+      botones.forEach((boton, i) => boton.classList.toggle('activo', i === seleccionBusqueda));
+      botones[seleccionBusqueda].focus();
+    }
+    if (evento.key === 'Enter' && documentoActivo()) abrirResultado(0);
+  });
+}
+function documentoActivo() { return document.activeElement === buscarEntrada; }
+
+// Preferencias de lectura: se quedan en la sesión, no en la máquina.
+const CLAVE_LECTURA = 'govet_preferencias_lectura';
+const btnTextoGrande = document.getElementById('btnTextoGrande');
+const btnContraste = document.getElementById('btnContraste');
+
+function aplicarLectura(pref) {
+  document.documentElement.classList.toggle('texto-grande', !!pref.grande);
+  document.documentElement.classList.toggle('alto-contraste', !!pref.contraste);
+  btnTextoGrande.setAttribute('aria-pressed', String(!!pref.grande));
+  btnContraste.setAttribute('aria-pressed', String(!!pref.contraste));
+}
+function leerLectura() {
+  try { return JSON.parse(sessionStorage.getItem(CLAVE_LECTURA)) || {}; }
+  catch (e) { return {}; }
+}
+function guardarLectura() {
+  try {
+    sessionStorage.setItem(CLAVE_LECTURA, JSON.stringify({
+      grande: document.documentElement.classList.contains('texto-grande'),
+      contraste: document.documentElement.classList.contains('alto-contraste')
+    }));
+  } catch (e) { /* algunos navegadores bloquean el almacenamiento */ }
+}
+if (btnTextoGrande && btnContraste) {
+  aplicarLectura(leerLectura());
+  btnTextoGrande.addEventListener('click', () => {
+    document.documentElement.classList.toggle('texto-grande');
+    guardarLectura();
+  });
+  btnContraste.addEventListener('click', () => {
+    document.documentElement.classList.toggle('alto-contraste');
+    guardarLectura();
+  });
+  document.getElementById('btnRestablecer').addEventListener('click', () => {
+    aplicarLectura({});
+    guardarLectura();
+  });
+}
+
+const btnImprimir = document.getElementById('btnImprimir');
+if (btnImprimir) btnImprimir.addEventListener('click', () => window.print());
+
+function verificarAgenda() {
+  const etiqueta = document.getElementById('estadoAgenda');
+  if (!etiqueta) return;
+  if (puentePublico) {
+    etiqueta.textContent = 'Puente configurado';
+    etiqueta.classList.add('en-linea');
+  } else {
+    etiqueta.textContent = 'Agenda por teléfono';
+  }
 }

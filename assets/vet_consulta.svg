@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="titulo">
+  <title id="titulo">Ilustración de una consulta veterinaria</title>
+  <defs>
+    <pattern id="trama" width="42" height="42" patternUnits="userSpaceOnUse">
+      <path d="M42 0H0V42" fill="none" stroke="#3DD6C0" stroke-opacity=".07" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="brillo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3DD6C0" stop-opacity=".20"/>
+      <stop offset="1" stop-color="#F2B24C" stop-opacity=".06"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="#0B1320"/>
+  <rect width="1200" height="675" fill="url(#trama)"/>
+  <circle cx="760" cy="300" r="270" fill="url(#brillo)"/>
+  <circle cx="760" cy="300" r="210" fill="none" stroke="#3DD6C0" stroke-opacity=".16" stroke-width="2"/>
+
+  <!-- monitor con pulso -->
+  <rect x="826" y="126" width="236" height="150" rx="12" fill="#1B2F49" stroke="#2C4562" stroke-width="2"/>
+  <rect x="842" y="142" width="204" height="104" rx="7" fill="#0B1320"/>
+  <path d="M852 194h30l12-24 16 48 15-34 12 10h28l12-20 15 40 14-20h30"
+        fill="none" stroke="#3DD6C0" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="930" y="276" width="28" height="18" rx="3" fill="#2C4562"/>
+  <rect x="884" y="292" width="120" height="8" rx="4" fill="#2C4562"/>
+
+  <!-- mesa -->
+  <rect x="120" y="470" width="960" height="22" rx="8" fill="#2C4562"/>
+  <rect x="150" y="492" width="20" height="120" fill="#1B2F49"/>
+  <rect x="1030" y="492" width="20" height="120" fill="#1B2F49"/>
+
+  <!-- veterinario -->
+  <path d="M338 470c0-104 44-168 116-168s116 64 116 168z" fill="#2FB7A6"/>
+  <path d="M404 330c0-46 22-74 50-74s50 28 50 74c0 32-22 52-50 52s-50-20-50-52z" fill="#E8B89B"/>
+  <path d="M404 322c-4-52 22-82 50-82s54 30 50 82c-12-22-28-32-50-32s-38 10-50 32z" fill="#24344A"/>
+  <path d="M454 470v-88" stroke="#EAF2FA" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="454" cy="382" r="9" fill="none" stroke="#EAF2FA" stroke-width="4"/>
+  <path d="M454 391v34" stroke="#EAF2FA" stroke-width="4"/>
+  <circle cx="470" cy="426" r="12" fill="#EAF2FA"/>
+  <!-- brazo que acaricia -->
+  <path d="M552 372c58 6 88 34 96 72" fill="none" stroke="#2FB7A6" stroke-width="34" stroke-linecap="round"/>
+  <circle cx="652" cy="448" r="18" fill="#E8B89B"/>
+  <!-- placa -->
+  <circle cx="382" cy="392" r="17" fill="#F2B24C"/>
+  <path d="M382 384v16M374 392h16" stroke="#0B1320" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- perro -->
+  <ellipse cx="742" cy="414" rx="122" ry="56" fill="#E8C9A0"/>
+  <path d="M662 404c-12-46 6-78 34-78s40 30 30 74z" fill="#B98F63"/>
+  <path d="M676 352c-24-34-12-64 8-66 14-2 26 20 30 44z" fill="#B98F63"/>
+  <path d="M806 350c24-34 12-64-8-66-14-2-26 20-30 44z" fill="#B98F63"/>
+  <ellipse cx="742" cy="342" rx="82" ry="70" fill="#E8C9A0"/>
+  <ellipse cx="742" cy="368" rx="44" ry="30" fill="#F2E3CB"/>
+  <circle cx="712" cy="330" r="8" fill="#24344A"/>
+  <circle cx="772" cy="330" r="8" fill="#24344A"/>
+  <ellipse cx="742" cy="356" rx="11" ry="8" fill="#24344A"/>
+  <path d="M742 364v10M742 374c-10 10-24 8-30 0M742 374c10 10 24 8 30 0"
+        fill="none" stroke="#24344A" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M666 430c-38 6-56 22-56 40" fill="none" stroke="#E8C9A0" stroke-width="20" stroke-linecap="round"/>
+
+  <!-- detalle ambiental -->
+  <circle cx="212" cy="196" r="34" fill="#F2B24C" opacity=".9"/>
+  <path d="M212 178v36M194 196h36" stroke="#0B1320" stroke-width="6" stroke-linecap="round"/>
+  <rect x="108" y="266" width="6" height="204" rx="3" fill="#2C4562"/>
+  <circle cx="111" cy="250" r="16" fill="#3DD6C0" opacity=".8"/>
+</svg>

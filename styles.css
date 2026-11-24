@@ -147,6 +147,16 @@ p { margin: 0 0 14px; }
   color: var(--texto);
   padding: 80px 0 72px;
 }
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .16;
+  pointer-events: none;
+  z-index: 0;
+}
 .hero-patron {
   position: absolute;
   width: 380px;
@@ -159,6 +169,7 @@ p { margin: 0 0 14px; }
 }
 .hero-inner {
   position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1.4fr 0.8fr;
   gap: 52px;
@@ -232,6 +243,24 @@ p { margin: 0 0 14px; }
   padding: 5px 15px;
   font-size: 0.87rem;
   font-weight: 700;
+}
+
+.ilustracion {
+  margin: 30px 0 0;
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-left: 4px solid var(--teal);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  overflow: hidden;
+}
+.ilustracion img { display: block; width: 100%; height: auto; }
+.ilustracion-detalle { border-left-color: var(--ambar); }
+.ilustracion figcaption {
+  border-top: 1px solid var(--borde);
+  padding: 12px 18px;
+  color: var(--muted);
+  font-size: 0.9rem;
 }
 
 /* ---------- Servicios ---------- */
@@ -511,6 +540,7 @@ p { margin: 0 0 14px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
+  .hero-video { display: none; }
 }
 
 @media print {
@@ -525,7 +555,7 @@ p { margin: 0 0 14px; }
     --ambar: #8A5A00;
   }
   body { background: #fff; color: #111; }
-  .site-header, .btn-flotante, .btn-arriba, .footer-nav, .marca { display: none !important; }
+  .site-header, .btn-flotante, .btn-arriba, .footer-nav, .marca, .hero-video, .ilustracion { display: none !important; }
   .hero { background: #fff; color: #111; }
   .hero h1, .hero .eyebrow, .lead { color: #111; }
   .dato, .tarjeta-servicio, .tarjeta-vet, .pasos li, .acordeon details, .datos-contacto {

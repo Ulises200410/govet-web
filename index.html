@@ -35,7 +35,7 @@
   <header class="site-header" id="arriba">
     <div class="contenedor header-inner">
       <a class="marca" href="#arriba" aria-label="Veterinaria GOVET, inicio">
-        <img src="assets/logo_principal.png" alt="Logotipo de Veterinaria GOVET" width="150">
+        <img src="assets/logo_principal.png" alt="Logotipo de Veterinaria GOVET" width="150" height="50">
       </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navegacion" aria-label="Abrir menú">
         <span></span><span></span><span></span>
@@ -54,6 +54,10 @@
   <main id="contenido">
 
     <section class="hero">
+      <video class="hero-video" autoplay muted loop playsinline preload="none"
+             poster="assets/vet_consulta.svg" aria-hidden="true" tabindex="-1">
+        <source src="assets/govet_loop.webm" type="video/webm">
+      </video>
       <svg class="hero-patron" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
         <g fill="currentColor">
           <ellipse cx="60" cy="55" rx="12" ry="16"/><ellipse cx="95" cy="42" rx="12" ry="16"/>
@@ -90,6 +94,10 @@
         <ul class="especies" aria-label="Tipos de mascotas que atendemos">
           <li>Perros</li><li>Gatos</li><li>Aves de compañía</li>
         </ul>
+        <figure class="ilustracion">
+          <img src="assets/vet_consulta.svg" alt="Ilustración de un veterinario revisando a un perro durante la consulta" width="1200" height="675" loading="lazy">
+          <figcaption>Una revisión tranquila, con el servicio y el costo claros desde el principio.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -174,6 +182,10 @@
           <li><span class="numero">3</span><div><h3>Recibe tu hora</h3><p>La cita queda registrada en la agenda con fecha, hora y veterinario asignado.</p></div></li>
           <li><span class="numero">4</span><div><h3>Recoge tu comprobante</h3><p>Al finalizar te entregamos un PDF con folio, servicios y total.</p></div></li>
         </ol>
+        <figure class="ilustracion ilustracion-detalle">
+          <img src="assets/clinica_detalle.svg" alt="Ilustración de un rincón de la clínica con un gato y un maletín médico" width="1200" height="675" loading="lazy">
+          <figcaption>Tu mascota y su historial ya están en la agenda cuando llegas.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -238,7 +250,7 @@
 
   <footer class="site-footer">
     <div class="contenedor footer-inner">
-      <img src="assets/logo_simbolo.png" alt="" width="40" aria-hidden="true">
+      <img src="assets/logo_simbolo.png" alt="" width="40" height="40" aria-hidden="true">
       <p>Veterinaria GOVET · Tlapa de Comonfort, Guerrero</p>
       <nav class="footer-nav" aria-label="Enlaces del pie">
         <a href="#servicios">Servicios</a>

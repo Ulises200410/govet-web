@@ -118,6 +118,7 @@ p { margin: 0 0 14px; }
 .contacto-botones { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
 .btn-whatsapp { background: #25D366; color: #062E18; border-color: #25D366; }
 .btn-whatsapp:hover { background: #1EBE57; color: #062E18; border-color: #1EBE57; }
+.contacto-botones .btn svg { width: 17px; height: 17px; fill: currentColor; vertical-align: -3px; margin-right: 6px; }
 .btn-header { color: var(--ambar); border-color: var(--ambar); background: transparent; padding: 8px 16px; flex-shrink: 0; }
 .btn-header:hover { background: var(--ambar); color: var(--fondo); }
 
@@ -285,7 +286,7 @@ p { margin: 0 0 14px; }
 }
 .indice-cabecera .etiqueta { margin: 0; }
 .indice-cabecera p:last-child { margin: 0; color: var(--muted); }
-.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; counter-reset: indice; }
 .chips a {
   display: inline-flex;
   align-items: center;
@@ -298,7 +299,16 @@ p { margin: 0 0 14px; }
   text-decoration: none;
   font-size: 0.9rem;
 }
-.chips a::before { content: "↗"; color: var(--teal); margin-right: 8px; }
+.chips a::before {
+  counter-increment: indice;
+  content: counter(indice, decimal-leading-zero);
+  margin-right: 9px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: var(--fondo);
+  color: var(--ambar);
+  font: 700 0.72rem/1 var(--mono);
+}
 .chips a:hover { border-color: var(--ambar); color: var(--ambar); }
 
 /* ---------- Vídeo explicativo ---------- */
@@ -505,6 +515,21 @@ p { margin: 0 0 14px; }
   margin: 16px 0 0;
 }
 .pista-icono { color: var(--ambar); font-size: 1.2rem; line-height: 1; }
+.leyenda {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+.leyenda span { display: inline-flex; align-items: center; gap: 7px; }
+.leyenda i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+.punto-teal { background: var(--teal); }
+.punto-ambar { background: var(--ambar); }
+.leyenda a { color: var(--teal); margin-left: auto; }
+.leyenda a:hover { color: var(--ambar); }
 
 .tarjeta-servicio {
   position: relative;
@@ -713,11 +738,13 @@ p { margin: 0 0 14px; }
 .acordeon details {
   background: var(--tarjeta);
   border: 1px solid var(--borde);
+  border-left: 3px solid var(--teal);
   border-radius: var(--radio);
   padding: 0 20px;
   box-shadow: var(--sombra);
 }
-.acordeon details[open] { border-left: 3px solid var(--teal); }
+.acordeon details[open] { border-left-width: 5px; }
+.acordeon details:nth-child(3n) { border-left-color: var(--ambar); }
 .acordeon summary {
   cursor: pointer;
   padding: 13px 0;

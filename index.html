@@ -38,10 +38,7 @@
     "mainEntity": [
       {"@type":"Question","name":"¿Cuánto cuesta una consulta?","acceptedAnswer":{"@type":"Answer","text":"La consulta general son $250 y suele tardar 30 minutos."}},
       {"@type":"Question","name":"¿Necesito cita o puedo llegar directo?","acceptedAnswer":{"@type":"Answer","text":"Agendamos por teléfono al 755 123 4567."}},
-      {"@type":"Question","name":"¿Qué servicios ofrecen?","acceptedAnswer":{"@type":"Answer","text":"Consulta general, vacunación, desparasitación, baño y estilizado, cirugía menor y ultrasonido."}},
       {"@type":"Question","name":"¿Cómo obtengo mi comprobante?","acceptedAnswer":{"@type":"Answer","text":"Al terminar sale un PDF con folio, servicios aplicados y total."}},
-      {"@type":"Question","name":"¿Dónde están ubicados?","acceptedAnswer":{"@type":"Answer","text":"Tlapa de Comonfort, Guerrero."}},
-      {"@type":"Question","name":"¿Cuánto dura cada servicio?","acceptedAnswer":{"@type":"Answer","text":"30, 20, 20, 60, 90 y 45 minutos, según el servicio."}},
       {"@type":"Question","name":"¿Qué datos quedan en la cita?","acceptedAnswer":{"@type":"Answer","text":"Folio, fecha y hora, tutor, mascota, veterinario, servicios y total."}},
       {"@type":"Question","name":"¿Puedo agendar desde el asistente de la página?","acceptedAnswer":{"@type":"Answer","text":"Sí, si el sistema GOVET está encendido; si no, el asistente da el teléfono."}},
        {"@type":"Question","name":"¿Puedo escribir por WhatsApp?","acceptedAnswer":{"@type":"Answer","text":"Sí, al número 755 123 4567. Si no contesta, llámanos para agendar."}}
@@ -128,7 +125,6 @@
         </div>
         <nav class="chips" aria-label="Ir a una sección">
           <a href="#nosotros">Quiénes somos</a>
-          <a href="#vistazo">Servicios de un vistazo</a>
           <a href="#como-trabajamos">Vídeo narrado</a>
           <a href="#servicios">Precios y detalle</a>
           <a href="#equipo">Equipo</a>
@@ -158,59 +154,6 @@
           <img src="assets/vet_consulta.svg" alt="Ilustración de un veterinario revisando a un perro durante la consulta" width="1200" height="675" loading="lazy">
           <figcaption>Una revisión tranquila, con el servicio y el costo claros desde el principio.</figcaption>
         </figure>
-      </div>
-    </section>
-
-    <section class="seccion seccion-clara" id="vistazo">
-      <div class="contenedor">
-        <p class="etiqueta">De un vistazo</p>
-        <h2>Empieza por lo que necesita tu mascota</h2>
-        <div class="carrusel carrusel-servicios" data-carrusel aria-label="Servicios de Veterinaria GOVET">
-          <button class="carrusel-flecha anterior" type="button" data-anterior aria-label="Servicio anterior">‹</button>
-          <div class="carrusel-ventana">
-            <div class="carrusel-pista">
-              <article class="carrusel-diapositiva" aria-hidden="false">
-                <span class="diapositiva-codigo">SER-01</span><h3>Consulta general</h3>
-                <p>Evaluación clínica del paciente.</p>
-                <div class="diapositiva-datos"><span>30 min</span><strong>$250</strong></div>
-                <a class="btn btn-secundario" href="tel:7551234567">Pedir esta cita</a>
-              </article>
-              <article class="carrusel-diapositiva" aria-hidden="true">
-                <span class="diapositiva-codigo">SER-02</span><h3>Vacunación</h3>
-                <p>Aplicación de vacuna y registro.</p>
-                <div class="diapositiva-datos"><span>20 min</span><strong>$180</strong></div>
-                <a class="btn btn-secundario" href="tel:7551234567">Pedir esta cita</a>
-              </article>
-              <article class="carrusel-diapositiva" aria-hidden="true">
-                <span class="diapositiva-codigo">SER-03</span><h3>Desparasitación</h3>
-                <p>Tratamiento interno y externo.</p>
-                <div class="diapositiva-datos"><span>20 min</span><strong>$150</strong></div>
-                <a class="btn btn-secundario" href="tel:7551234567">Pedir esta cita</a>
-              </article>
-              <article class="carrusel-diapositiva" aria-hidden="true">
-                <span class="diapositiva-codigo">SER-04</span><h3>Baño y estilizado</h3>
-                <p>Higiene y corte de pelo.</p>
-                <div class="diapositiva-datos"><span>60 min</span><strong>$300</strong></div>
-                <a class="btn btn-secundario" href="tel:7551234567">Pedir esta cita</a>
-              </article>
-              <article class="carrusel-diapositiva" aria-hidden="true">
-                <span class="diapositiva-codigo">SER-05</span><h3>Cirugía menor</h3>
-                <p>Procedimiento ambulatorio.</p>
-                <div class="diapositiva-datos"><span>90 min</span><strong>$850</strong></div>
-                <a class="btn btn-secundario" href="tel:7551234567">Pedir esta cita</a>
-              </article>
-              <article class="carrusel-diapositiva" aria-hidden="true">
-                <span class="diapositiva-codigo">SER-06</span><h3>Ultrasonido</h3>
-                <p>Estudio de diagnóstico por imagen.</p>
-                <div class="diapositiva-datos"><span>45 min</span><strong>$600</strong></div>
-                <a class="btn btn-secundario" href="tel:7551234567">Pedir esta cita</a>
-              </article>
-            </div>
-          </div>
-          <button class="carrusel-flecha siguiente" type="button" data-siguiente aria-label="Servicio siguiente">›</button>
-          <div class="carrusel-puntos" aria-label="Elegir servicio"></div>
-          <p class="sr-only" aria-live="polite" data-estado-carrusel></p>
-        </div>
       </div>
     </section>
 
@@ -281,6 +224,11 @@
           <p class="sr-only" aria-live="polite" id="estadoFiltroServicios"></p>
         </div>
         <p class="pista-tarjetas"><span class="pista-icono" aria-hidden="true">↻</span> Toca una tarjeta para ver el detalle. El precio y la duración siguen a la vista.</p>
+        <p class="leyenda">
+          <span><i class="punto-teal" aria-hidden="true"></i> Teal: servicio disponible</span>
+          <span><i class="punto-ambar" aria-hidden="true"></i> Ámbar: precio y duración</span>
+          <a href="#tabla-precios">Ir a la tabla de precios ↓</a>
+        </p>
         <div class="tarjetas-servicios">
           <article class="tarjeta-servicio">
             <div class="tarjeta-inner">
@@ -392,7 +340,7 @@
           </article>
         </div>
 
-        <details class="tabla-precios">
+        <details class="tabla-precios" id="tabla-precios">
           <summary>Ver los seis servicios en una tabla</summary>
           <table>
             <caption>Precios y duración estimada de los servicios de Veterinaria GOVET</caption>
@@ -531,20 +479,8 @@
             <p>Agendamos por teléfono al 755 123 4567. Con la cita metida en la agenda, tu mascota y su historial ya están ahí cuando llegues.</p>
           </details>
           <details>
-            <summary>¿Qué servicios ofrecen?</summary>
-            <p>Seis: los que ves arriba, con precio y duración publicados.</p>
-          </details>
-          <details>
             <summary>¿Cómo obtengo mi comprobante?</summary>
             <p>Al terminar sale un PDF con folio, servicios aplicados y total. Lo guardas o lo imprimes.</p>
-          </details>
-          <details>
-            <summary>¿Dónde están ubicados?</summary>
-            <p>Tlapa de Comonfort, Guerrero. Si te cuesta llegar, llámanos y te damos indicaciones.</p>
-          </details>
-          <details>
-            <summary>¿Cuánto dura cada servicio?</summary>
-            <p>30 min la consulta; 20 min vacunación y desparasitación; 60 min el baño; 90 min cirugía; 45 min ultrasonido.</p>
           </details>
           <details>
             <summary>¿Qué datos quedan en la cita?</summary>
@@ -574,8 +510,8 @@
           <p><strong>Dirección</strong>Tlapa de Comonfort, Guerrero</p>
           <p><strong>RFC</strong>GOVET-2026-01</p>
           <div class="contacto-botones">
-            <a class="btn btn-whatsapp" href="https://wa.me/527551234567?text=Hola%20GOVET%2C%20quisiera%20agendar%20una%20cita" target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp a Veterinaria GOVET">Escribir por WhatsApp</a>
-            <a class="btn btn-primario" href="tel:7551234567">Llamar ahora</a>
+            <a class="btn btn-whatsapp" href="https://wa.me/527551234567?text=Hola%20GOVET%2C%20quisiera%20agendar%20una%20cita" target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp a Veterinaria GOVET"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm4.4 12.1c-.2.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1s-.7.8-.8 1c-.2.2-.3.2-.6.1a6.6 6.6 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.6c-.1-.2 0-.4.1-.5l.4-.5.3-.5v-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3s-.8.8-.8 1.9.8 2.2.9 2.4c.1.2 1.6 2.4 3.8 3.4.5.2 1 .4 1.3.5.6.2 1.1.1 1.5.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/></svg>Escribir por WhatsApp</a>
+            <a class="btn btn-primario" href="tel:7551234567"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.2 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.8c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.2 1.1L6.6 10.8z"/></svg>Llamar ahora</a>
           </div>
         </address>
       </div>

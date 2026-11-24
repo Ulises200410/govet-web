@@ -81,6 +81,14 @@ const servicios = Array.from(document.querySelectorAll('.tarjeta-servicio')).map
 
 let paso = 'inicio';
 let borrador = {};
+let puentePublico = '';
+
+// La URL del túnel cambia en cada arranque: se lee de un archivo público y
+// mientras tanto se usa el puente local de la propia máquina.
+fetch('bridge-config.json', { cache: 'no-store' })
+  .then((respuesta) => respuesta.ok ? respuesta.json() : null)
+  .then((config) => { if (config && config.url) puentePublico = config.url.replace(/\/$/, ''); })
+  .catch(() => { puentePublico = ''; });
 
 function decir(texto, quien) {
   const burbuja = document.createElement('p');
@@ -217,16 +225,19 @@ elegir = function (valor) {
   elegirOriginal(valor);
 };
 
-function puedeHablarConEscritorio() {
-  return location.protocol === 'file:'
+function destinoPuente() {
+  if (puentePublico) return puentePublico;
+  const local = location.protocol === 'file:'
     || location.protocol === 'oc-preview:'
     || location.hostname === 'localhost'
     || location.hostname === '127.0.0.1';
+  return local ? 'http://127.0.0.1:8085' : '';
 }
 
 async function enviarCita() {
-  if (!puedeHablarConEscritorio()) {
-    decir('Para agendar solo, abre esta página en tu computadora con el sistema GOVET encendido. Mientras tanto llámanos al 755 123 4567.');
+  const destino = destinoPuente();
+  if (!destino) {
+    decir('Ahora mismo no encontramos la agenda en línea. Llámanos al 755 123 4567 y la registramos nosotros.');
     ofrecer([{ etiqueta: 'Ver servicios', valor: 'servicios' }]);
     return;
   }
@@ -239,7 +250,7 @@ async function enviarCita() {
     hora: borrador.hora
   });
   try {
-    const respuesta = await fetch('http://127.0.0.1:8085/api/citas', {
+    const respuesta = await fetch(destino + '/api/citas', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
       body: cuerpo.toString()

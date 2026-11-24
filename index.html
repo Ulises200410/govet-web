@@ -105,7 +105,7 @@
       <div class="contenedor">
         <p class="etiqueta">Lo que hacemos</p>
         <h2>Servicios y precios</h2>
-        <p class="intro">Precios en pesos. El tiempo que aparece en cada servicio es el que suele tardar.</p>
+        <p class="intro">Precios en pesos. El tiempo que aparece en cada servicio es el que suele tardar. En total son 6 servicios, desde $150, con 44 minutos de duración promedio.</p>
         <div class="tarjetas-servicios">
           <article class="tarjeta-servicio">
             <span class="codigo">SER-01</span>
@@ -189,6 +189,22 @@
       </div>
     </section>
 
+    <section class="seccion seccion-clara" id="expediente">
+      <div class="contenedor">
+        <p class="etiqueta">Tu historial</p>
+        <h2>Qué queda registrado</h2>
+        <p class="intro">Cada cita se guarda en el sistema de la clínica con estos datos, y con ellos se arma el comprobante en PDF.</p>
+        <ul class="lista-datos">
+          <li><strong>Tutor y mascota</strong><span>Quién trae al paciente y a quién se atiende.</span></li>
+          <li><strong>Fecha y hora</strong><span>El espacio reservado en la agenda.</span></li>
+          <li><strong>Veterinario</strong><span>El profesional asignado a la consulta.</span></li>
+          <li><strong>Servicios y cantidades</strong><span>Lo aplicado, con su precio unitario y subtotal.</span></li>
+          <li><strong>Total y estado</strong><span>Lo cobrado y en qué punto va la cita.</span></li>
+          <li><strong>Folio</strong><span>El número que identifica la cita y el comprobante.</span></li>
+        </ul>
+      </div>
+    </section>
+
     <section class="seccion" id="preguntas">
       <div class="contenedor preguntas-inner">
         <div>
@@ -216,6 +232,18 @@
           <details>
             <summary>¿Dónde están ubicados?</summary>
             <p>Estamos en Tlapa de Comonfort, Guerrero. Llámanos al 755 123 4567 si necesitas indicaciones para llegar.</p>
+          </details>
+          <details>
+            <summary>¿Cuánto dura cada servicio?</summary>
+            <p>Consulta general 30 min, vacunación 20 min, desparasitación 20 min, baño y estilizado 60 min, cirugía menor 90 min y ultrasonido 45 min. El tiempo exacto sale en cada tarjeta.</p>
+          </details>
+          <details>
+            <summary>¿Qué datos quedan en la cita?</summary>
+            <p>Folio, fecha, hora, tutor, mascota, veterinario, los servicios con su cantidad y precio, el total y el estado. Con eso se genera el comprobante.</p>
+          </details>
+          <details>
+            <summary>¿Puedo agendar desde el asistente de la página?</summary>
+            <p>Sí, si estás en tu computadora con el sistema GOVET encendido: el asistente manda la cita a la agenda y te devuelve el folio. Si no, llámanos al 755 123 4567 y la registramos nosotros.</p>
           </details>
         </div>
       </div>
@@ -260,6 +288,29 @@
       <p class="copyright">Sistema de gestión de citas veterinarias GOVET</p>
     </div>
   </footer>
+
+  <div class="chat" id="chat">
+    <button class="chat-btn" type="button" id="chatAbrir" aria-expanded="false" aria-controls="chatPanel" aria-label="Abrir asistente GOVET">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM7 9h10v2H7zm0 4h7v2H7z"/></svg>
+      <span>Asistente</span>
+    </button>
+    <section class="chat-panel" id="chatPanel" role="dialog" aria-label="Asistente GOVET" hidden>
+      <header class="chat-cabecera">
+        <div>
+          <strong>Asistente GOVET</strong>
+          <small>Responde con los datos de esta clínica</small>
+        </div>
+        <button type="button" id="chatCerrar" aria-label="Cerrar asistente">×</button>
+      </header>
+      <div class="chat-mensajes" id="chatMensajes" aria-live="polite"></div>
+      <div class="chat-respuestas" id="chatRespuestas"></div>
+      <form class="chat-form" id="chatForm" hidden>
+        <label class="sr-only" for="chatEntrada">Tu respuesta</label>
+        <input id="chatEntrada" type="text" autocomplete="off" placeholder="Escribe tu respuesta">
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+  </div>
 
   <script src="script.js"></script>
 </body>

@@ -28,6 +28,22 @@
     "priceRange": "$150 - $850"
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"¿Cuánto cuesta una consulta?","acceptedAnswer":{"@type":"Answer","text":"La consulta general son $250 y suele tardar 30 minutos."}},
+      {"@type":"Question","name":"¿Necesito cita o puedo llegar directo?","acceptedAnswer":{"@type":"Answer","text":"Agendamos por teléfono al 755 123 4567."}},
+      {"@type":"Question","name":"¿Qué servicios ofrecen?","acceptedAnswer":{"@type":"Answer","text":"Consulta general, vacunación, desparasitación, baño y estilizado, cirugía menor y ultrasonido."}},
+      {"@type":"Question","name":"¿Cómo obtengo mi comprobante?","acceptedAnswer":{"@type":"Answer","text":"Al terminar sale un PDF con folio, servicios aplicados y total."}},
+      {"@type":"Question","name":"¿Dónde están ubicados?","acceptedAnswer":{"@type":"Answer","text":"Tlapa de Comonfort, Guerrero."}},
+      {"@type":"Question","name":"¿Cuánto dura cada servicio?","acceptedAnswer":{"@type":"Answer","text":"30, 20, 20, 60, 90 y 45 minutos, según el servicio."}},
+      {"@type":"Question","name":"¿Qué datos quedan en la cita?","acceptedAnswer":{"@type":"Answer","text":"Folio, fecha y hora, tutor, mascota, veterinario, servicios y total."}},
+      {"@type":"Question","name":"¿Puedo agendar desde el asistente de la página?","acceptedAnswer":{"@type":"Answer","text":"Sí, si el sistema GOVET está encendido; si no, el asistente da el teléfono."}}
+    ]
+  }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -69,7 +85,8 @@
         <div class="hero-texto">
           <p class="eyebrow">Veterinaria GOVET · Tlapa de Comonfort, Guerrero</p>
           <h1>Cuidado veterinario para tus mascotas, sin vueltas.</h1>
-          <p class="lead">Atendemos consultas, vacunación, desparasitación, baño y estilizado, cirugía menor y ultrasonido. Llamas, te damos hora y al finalizar te llevas tu comprobante con el detalle de lo que se hizo.</p>
+          <p class="lead">Atendemos consultas, vacunación, desparasitación, baño y estilizado, cirugía menor y ultrasonido.</p>
+          <p class="lead lead-corta">Llamas, te damos hora y al finalizar te llevas tu comprobante con el detalle de lo que se hizo.</p>
           <div class="acciones">
             <a class="btn btn-primario" href="tel:7551234567">Llamar para agendar</a>
             <a class="btn btn-secundario" href="#servicios">Ver servicios y precios</a>
@@ -131,7 +148,7 @@
             <p>Higiene y corte de pelo.</p>
             <div class="pie-tarjeta"><span class="duracion">60 min</span><span class="precio">$300</span></div>
           </article>
-          <article class="tarjeta-servicio">
+          <article class="tarjeta-servicio destacada">
             <span class="codigo">SER-05</span>
             <h3>Cirugía menor</h3>
             <p>Procedimiento ambulatorio.</p>
@@ -215,35 +232,35 @@
         <div class="acordeon">
           <details>
             <summary>¿Cuánto cuesta una consulta?</summary>
-            <p>La consulta general cuesta $250 y dura cerca de 30 minutos. Si tu mascota necesita otro servicio, el total se calcula con cada uno de ellos.</p>
+            <p>La consulta general son $250 y suele tardar 30 minutos. Si llevas más de un servicio, el total se suma en la misma cita.</p>
           </details>
           <details>
             <summary>¿Necesito cita o puedo llegar directo?</summary>
-            <p>Agendamos por teléfono al 755 123 4567. Con la cita registrada, tu mascota y su historial ya están en la agenda cuando llegues.</p>
+            <p>Agendamos por teléfono al 755 123 4567. Con la cita metida en la agenda, tu mascota y su historial ya están ahí cuando llegues.</p>
           </details>
           <details>
             <summary>¿Qué servicios ofrecen?</summary>
-            <p>Consulta general, vacunación, desparasitación, baño y estilizado, cirugía menor y ultrasonido. Todos tienen precio y duración publicados en esta página.</p>
+            <p>Seis: los que ves arriba, con precio y duración publicados.</p>
           </details>
           <details>
             <summary>¿Cómo obtengo mi comprobante?</summary>
-            <p>Al terminar la atención generamos un PDF con folio, los servicios aplicados y el total. Lo puedes imprimir o guardar.</p>
+            <p>Al terminar sale un PDF con folio, servicios aplicados y total. Lo guardas o lo imprimes.</p>
           </details>
           <details>
             <summary>¿Dónde están ubicados?</summary>
-            <p>Estamos en Tlapa de Comonfort, Guerrero. Llámanos al 755 123 4567 si necesitas indicaciones para llegar.</p>
+            <p>Tlapa de Comonfort, Guerrero. Si te cuesta llegar, llámanos y te damos indicaciones.</p>
           </details>
           <details>
             <summary>¿Cuánto dura cada servicio?</summary>
-            <p>Consulta general 30 min, vacunación 20 min, desparasitación 20 min, baño y estilizado 60 min, cirugía menor 90 min y ultrasonido 45 min. El tiempo exacto sale en cada tarjeta.</p>
+            <p>30 min la consulta; 20 min vacunación y desparasitación; 60 min el baño; 90 min cirugía; 45 min ultrasonido.</p>
           </details>
           <details>
             <summary>¿Qué datos quedan en la cita?</summary>
-            <p>Folio, fecha, hora, tutor, mascota, veterinario, los servicios con su cantidad y precio, el total y el estado. Con eso se genera el comprobante.</p>
+            <p>Folio, fecha y hora, quién trae a quién, el veterinario, lo aplicado y el total. Nada se anota en papel.</p>
           </details>
           <details>
             <summary>¿Puedo agendar desde el asistente de la página?</summary>
-            <p>Sí. Cuando el sistema GOVET está encendido, el asistente manda la cita a la agenda y te devuelve el folio, estés donde estés. Si no está disponible, llámanos al 755 123 4567 y la registramos nosotros.</p>
+            <p>Sí, si el sistema GOVET está encendido: te devuelve el folio. Si no, el asistente te pasa el teléfono.</p>
           </details>
         </div>
       </div>

@@ -188,6 +188,7 @@ p { margin: 0 0 14px; }
   border-left: 3px solid var(--ambar);
 }
 .lead { font-size: 1.1rem; color: #C9D8E8; max-width: 60ch; }
+.lead-corta { font-size: 1rem; color: var(--muted); max-width: 48ch; }
 .acciones { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
 .hero .btn-secundario { color: var(--texto); border-color: var(--texto); }
 .hero .btn-secundario:hover { background: var(--texto); color: var(--fondo); }
@@ -282,6 +283,8 @@ p { margin: 0 0 14px; }
   transition: transform 160ms ease, border-color 160ms ease;
 }
 .tarjeta-servicio:hover { transform: translateY(-3px); border-left-color: var(--ambar); }
+.tarjeta-servicio.destacada { border-left-color: var(--ambar); }
+.tarjeta-servicio.destacada .codigo { color: var(--ambar); }
 .tarjeta-servicio .codigo {
   display: inline-block;
   align-self: flex-start;
@@ -370,6 +373,7 @@ p { margin: 0 0 14px; }
   font-weight: 700;
   margin-bottom: 12px;
 }
+.pasos li:last-child { border-top-color: var(--teal); }
 .pasos p { color: var(--muted); font-size: 0.92rem; margin: 0; }
 
 /* ---------- Preguntas ---------- */
@@ -520,6 +524,11 @@ p { margin: 0 0 14px; }
   gap: 14px;
   padding: 0;
   margin: 26px 0 0;
+}
+.lista-datos li:first-child {
+  grid-column: 1 / -1;
+  border-top-color: var(--teal);
+  border-left-color: var(--teal);
 }
 .lista-datos li {
   background: var(--tarjeta);

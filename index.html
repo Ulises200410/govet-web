@@ -10,8 +10,11 @@
   <meta property="og:description" content="Seis servicios veterinarios, dos veterinarios y un solo lugar para agendar la consulta de tu mascota.">
   <meta property="og:image" content="assets/logo_principal.png">
   <meta name="theme-color" content="#0B1320">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <link rel="icon" href="assets/logo_simbolo.png" type="image/png">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20261123">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -118,47 +121,200 @@
       </div>
     </section>
 
+    <section class="seccion seccion-clara" id="vistazo">
+      <div class="contenedor">
+        <p class="etiqueta">De un vistazo</p>
+        <h2>Empieza por lo que necesita tu mascota</h2>
+        <div class="carrusel carrusel-servicios" data-carrusel aria-label="Servicios de Veterinaria GOVET">
+          <button class="carrusel-flecha anterior" type="button" data-anterior aria-label="Servicio anterior">‹</button>
+          <div class="carrusel-ventana">
+            <div class="carrusel-pista">
+              <article class="carrusel-diapositiva" aria-hidden="false">
+                <span class="diapositiva-codigo">SER-01</span><h3>Consulta general</h3>
+                <p>Evaluación clínica del paciente.</p>
+                <div class="diapositiva-datos"><span>30 min</span><strong>$250</strong></div>
+                <a class="btn btn-secundario" href="tel:7551234567">Pedir esta cita</a>
+              </article>
+              <article class="carrusel-diapositiva" aria-hidden="true">
+                <span class="diapositiva-codigo">SER-02</span><h3>Vacunación</h3>
+                <p>Aplicación de vacuna y registro.</p>
+                <div class="diapositiva-datos"><span>20 min</span><strong>$180</strong></div>
+                <a class="btn btn-secundario" href="tel:7551234567">Pedir esta cita</a>
+              </article>
+              <article class="carrusel-diapositiva" aria-hidden="true">
+                <span class="diapositiva-codigo">SER-03</span><h3>Desparasitación</h3>
+                <p>Tratamiento interno y externo.</p>
+                <div class="diapositiva-datos"><span>20 min</span><strong>$150</strong></div>
+                <a class="btn btn-secundario" href="tel:7551234567">Pedir esta cita</a>
+              </article>
+              <article class="carrusel-diapositiva" aria-hidden="true">
+                <span class="diapositiva-codigo">SER-04</span><h3>Baño y estilizado</h3>
+                <p>Higiene y corte de pelo.</p>
+                <div class="diapositiva-datos"><span>60 min</span><strong>$300</strong></div>
+                <a class="btn btn-secundario" href="tel:7551234567">Pedir esta cita</a>
+              </article>
+              <article class="carrusel-diapositiva" aria-hidden="true">
+                <span class="diapositiva-codigo">SER-05</span><h3>Cirugía menor</h3>
+                <p>Procedimiento ambulatorio.</p>
+                <div class="diapositiva-datos"><span>90 min</span><strong>$850</strong></div>
+                <a class="btn btn-secundario" href="tel:7551234567">Pedir esta cita</a>
+              </article>
+              <article class="carrusel-diapositiva" aria-hidden="true">
+                <span class="diapositiva-codigo">SER-06</span><h3>Ultrasonido</h3>
+                <p>Estudio de diagnóstico por imagen.</p>
+                <div class="diapositiva-datos"><span>45 min</span><strong>$600</strong></div>
+                <a class="btn btn-secundario" href="tel:7551234567">Pedir esta cita</a>
+              </article>
+            </div>
+          </div>
+          <button class="carrusel-flecha siguiente" type="button" data-siguiente aria-label="Servicio siguiente">›</button>
+          <div class="carrusel-puntos" aria-label="Elegir servicio"></div>
+          <p class="sr-only" aria-live="polite" data-estado-carrusel></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion seccion-video" id="como-trabajamos">
+      <div class="contenedor video-inner">
+        <div>
+          <p class="etiqueta">En cuatro frases</p>
+          <h2>Así trabajamos en GOVET</h2>
+          <p>Un recorrido corto por lo que hacemos, desde la llamada hasta el comprobante.</p>
+          <p class="nota-mano">Si no sabes cuál elegir, llámanos y lo vemos juntos.</p>
+          <a class="btn btn-primario" href="tel:7551234567">Agendar cita</a>
+        </div>
+        <figure class="video-marco">
+          <video controls preload="none" poster="assets/vet_consulta.svg" aria-label="Vídeo: qué hace la Veterinaria GOVET">
+            <source src="assets/govet_explicacion.webm" type="video/webm">
+            Tu navegador no puede mostrar este vídeo. Puedes leer la transcripción abajo.
+          </video>
+          <figcaption>
+            <details>
+              <summary>Leer el texto del vídeo</summary>
+              <p>1. Veterinaria GOVET, en Tlapa de Comonfort, Guerrero.</p>
+              <p>2. Seis servicios: consulta, vacunación, desparasitación, baño, cirugía menor y ultrasonido.</p>
+              <p>3. Agenda por teléfono al 755 123 4567: te damos hora y veterinario.</p>
+              <p>4. Al final, comprobante en PDF con folio, servicios y total.</p>
+            </details>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
     <section class="seccion seccion-clara" id="servicios">
       <div class="contenedor">
         <p class="etiqueta">Lo que hacemos</p>
         <h2>Servicios y precios</h2>
         <p class="intro">Precios en pesos. El tiempo que aparece en cada servicio es el que suele tardar. En total son 6 servicios, desde $150, con 44 minutos de duración promedio.</p>
+        <p class="pista-tarjetas"><span class="pista-icono" aria-hidden="true">↻</span> Toca una tarjeta para ver el detalle. El precio y la duración siguen a la vista.</p>
         <div class="tarjetas-servicios">
           <article class="tarjeta-servicio">
-            <span class="codigo">SER-01</span>
-            <h3>Consulta general</h3>
-            <p>Evaluación clínica del paciente.</p>
-            <div class="pie-tarjeta"><span class="duracion">30 min</span><span class="precio">$250</span></div>
+            <div class="tarjeta-inner">
+              <div class="cara frente">
+                <span class="codigo">SER-01</span>
+                <h3>Consulta general</h3>
+                <p>Evaluación clínica del paciente.</p>
+                <div class="pie-tarjeta"><span class="duracion">30 min</span><span class="precio">$250</span></div>
+              </div>
+              <div class="cara dorso" aria-hidden="true">
+                <span class="codigo-dorso">SER-01 · Detalle</span>
+                <h4>Consulta general</h4>
+                <p>La revisión se anota en el expediente de la mascota. Al terminar verás la consulta y su precio en el comprobante.</p>
+                <ul class="detalle-servicio"><li><span>Precio</span><strong>$250</strong></li><li><span>Duración</span><strong>30 min</strong></li></ul>
+                <a class="llamada" href="tel:7551234567">Llamar para agendar ↗</a>
+              </div>
+            </div>
+            <button class="girar" type="button" aria-label="Ver detalle de Consulta general" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.7 6.3A8 8 0 1 0 20 12h-2a6 6 0 1 1-1.8-4.3L14 10h6V4z"/></svg></button>
           </article>
           <article class="tarjeta-servicio">
-            <span class="codigo">SER-02</span>
-            <h3>Vacunación</h3>
-            <p>Aplicación de vacuna y registro.</p>
-            <div class="pie-tarjeta"><span class="duracion">20 min</span><span class="precio">$180</span></div>
+            <div class="tarjeta-inner">
+              <div class="cara frente">
+                <span class="codigo">SER-02</span>
+                <h3>Vacunación</h3>
+                <p>Aplicación de vacuna y registro.</p>
+                <div class="pie-tarjeta"><span class="duracion">20 min</span><span class="precio">$180</span></div>
+              </div>
+              <div class="cara dorso" aria-hidden="true">
+                <span class="codigo-dorso">SER-02 · Detalle</span>
+                <h4>Vacunación</h4>
+                <p>La aplicación queda registrada con su fecha en el historial. El comprobante muestra el servicio y el total.</p>
+                <ul class="detalle-servicio"><li><span>Precio</span><strong>$180</strong></li><li><span>Duración</span><strong>20 min</strong></li></ul>
+                <a class="llamada" href="tel:7551234567">Llamar para agendar ↗</a>
+              </div>
+            </div>
+            <button class="girar" type="button" aria-label="Ver detalle de Vacunación" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.7 6.3A8 8 0 1 0 20 12h-2a6 6 0 1 1-1.8-4.3L14 10h6V4z"/></svg></button>
           </article>
           <article class="tarjeta-servicio">
-            <span class="codigo">SER-03</span>
-            <h3>Desparasitación</h3>
-            <p>Tratamiento interno y externo.</p>
-            <div class="pie-tarjeta"><span class="duracion">20 min</span><span class="precio">$150</span></div>
+            <div class="tarjeta-inner">
+              <div class="cara frente">
+                <span class="codigo">SER-03</span>
+                <h3>Desparasitación</h3>
+                <p>Tratamiento interno y externo.</p>
+                <div class="pie-tarjeta"><span class="duracion">20 min</span><span class="precio">$150</span></div>
+              </div>
+              <div class="cara dorso" aria-hidden="true">
+                <span class="codigo-dorso">SER-03 · Detalle</span>
+                <h4>Desparasitación</h4>
+                <p>El tratamiento se anota en el expediente. Al finalizar recibes el detalle con folio y precio.</p>
+                <ul class="detalle-servicio"><li><span>Precio</span><strong>$150</strong></li><li><span>Duración</span><strong>20 min</strong></li></ul>
+                <a class="llamada" href="tel:7551234567">Llamar para agendar ↗</a>
+              </div>
+            </div>
+            <button class="girar" type="button" aria-label="Ver detalle de Desparasitación" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.7 6.3A8 8 0 1 0 20 12h-2a6 6 0 1 1-1.8-4.3L14 10h6V4z"/></svg></button>
           </article>
           <article class="tarjeta-servicio">
-            <span class="codigo">SER-04</span>
-            <h3>Baño y estilizado</h3>
-            <p>Higiene y corte de pelo.</p>
-            <div class="pie-tarjeta"><span class="duracion">60 min</span><span class="precio">$300</span></div>
+            <div class="tarjeta-inner">
+              <div class="cara frente">
+                <span class="codigo">SER-04</span>
+                <h3>Baño y estilizado</h3>
+                <p>Higiene y corte de pelo.</p>
+                <div class="pie-tarjeta"><span class="duracion">60 min</span><span class="precio">$300</span></div>
+              </div>
+              <div class="cara dorso" aria-hidden="true">
+                <span class="codigo-dorso">SER-04 · Detalle</span>
+                <h4>Baño y estilizado</h4>
+                <p>La cita se aparta con hora asignada. La duración es estimada y puede variar según el tamaño y el pelaje.</p>
+                <ul class="detalle-servicio"><li><span>Precio</span><strong>$300</strong></li><li><span>Duración</span><strong>60 min</strong></li></ul>
+                <a class="llamada" href="tel:7551234567">Llamar para agendar ↗</a>
+              </div>
+            </div>
+            <button class="girar" type="button" aria-label="Ver detalle de Baño y estilizado" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.7 6.3A8 8 0 1 0 20 12h-2a6 6 0 1 1-1.8-4.3L14 10h6V4z"/></svg></button>
           </article>
           <article class="tarjeta-servicio destacada">
-            <span class="codigo">SER-05</span>
-            <h3>Cirugía menor</h3>
-            <p>Procedimiento ambulatorio.</p>
-            <div class="pie-tarjeta"><span class="duracion">90 min</span><span class="precio">$850</span></div>
+            <div class="tarjeta-inner">
+              <div class="cara frente">
+                <span class="codigo">SER-05</span>
+                <h3>Cirugía menor</h3>
+                <p>Procedimiento ambulatorio.</p>
+                <div class="pie-tarjeta"><span class="duracion">90 min</span><span class="precio">$850</span></div>
+              </div>
+              <div class="cara dorso" aria-hidden="true">
+                <span class="codigo-dorso">SER-05 · Detalle</span>
+                <h4>Cirugía menor</h4>
+                <p>Se agenda con veterinario asignado y queda registrada con folio. El total se desglosa en el comprobante.</p>
+                <ul class="detalle-servicio"><li><span>Precio</span><strong>$850</strong></li><li><span>Duración</span><strong>90 min</strong></li></ul>
+                <a class="llamada" href="tel:7551234567">Llamar para agendar ↗</a>
+              </div>
+            </div>
+            <button class="girar" type="button" aria-label="Ver detalle de Cirugía menor" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.7 6.3A8 8 0 1 0 20 12h-2a6 6 0 1 1-1.8-4.3L14 10h6V4z"/></svg></button>
           </article>
           <article class="tarjeta-servicio">
-            <span class="codigo">SER-06</span>
-            <h3>Ultrasonido</h3>
-            <p>Estudio de diagnóstico por imagen.</p>
-            <div class="pie-tarjeta"><span class="duracion">45 min</span><span class="precio">$600</span></div>
+            <div class="tarjeta-inner">
+              <div class="cara frente">
+                <span class="codigo">SER-06</span>
+                <h3>Ultrasonido</h3>
+                <p>Estudio de diagnóstico por imagen.</p>
+                <div class="pie-tarjeta"><span class="duracion">45 min</span><span class="precio">$600</span></div>
+              </div>
+              <div class="cara dorso" aria-hidden="true">
+                <span class="codigo-dorso">SER-06 · Detalle</span>
+                <h4>Ultrasonido</h4>
+                <p>La cita queda en la agenda con fecha y hora. El servicio y su precio aparecen en el comprobante.</p>
+                <ul class="detalle-servicio"><li><span>Precio</span><strong>$600</strong></li><li><span>Duración</span><strong>45 min</strong></li></ul>
+                <a class="llamada" href="tel:7551234567">Llamar para agendar ↗</a>
+              </div>
+            </div>
+            <button class="girar" type="button" aria-label="Ver detalle de Ultrasonido" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.7 6.3A8 8 0 1 0 20 12h-2a6 6 0 1 1-1.8-4.3L14 10h6V4z"/></svg></button>
           </article>
         </div>
       </div>
@@ -203,6 +359,35 @@
           <img src="assets/clinica_detalle.svg" alt="Ilustración de un rincón de la clínica con un gato y un maletín médico" width="1200" height="675" loading="lazy">
           <figcaption>Tu mascota y su historial ya están en la agenda cuando llegas.</figcaption>
         </figure>
+      </div>
+    </section>
+
+    <section class="seccion" id="galeria">
+      <div class="contenedor">
+        <p class="etiqueta">Así se ve por dentro</p>
+        <h2>Tres cosas que siempre están claras</h2>
+        <div class="carrusel carrusel-galeria" data-carrusel aria-label="Imágenes de la clínica y su agenda">
+          <button class="carrusel-flecha anterior" type="button" data-anterior aria-label="Anterior">‹</button>
+          <div class="carrusel-ventana">
+            <div class="carrusel-pista">
+              <figure class="carrusel-diapositiva" aria-hidden="false">
+                <img src="assets/vet_consulta.svg" alt="Veterinario revisando a un perro durante la consulta" width="1200" height="675" loading="lazy">
+                <figcaption>Una revisión tranquila, con el servicio y el costo claros desde el principio.</figcaption>
+              </figure>
+              <figure class="carrusel-diapositiva" aria-hidden="true">
+                <img src="assets/agenda_dia.svg" alt="Esquema de la agenda con hora, tutor, mascota y servicio" width="1200" height="675" loading="lazy">
+                <figcaption>Fecha, hora, tutor, mascota y servicio: todo queda en un solo lugar.</figcaption>
+              </figure>
+              <figure class="carrusel-diapositiva" aria-hidden="true">
+                <img src="assets/clinica_detalle.svg" alt="Rincón de la clínica con un gato y un maletín médico" width="1200" height="675" loading="lazy">
+                <figcaption>Tu mascota y su historial ya están en la agenda cuando llegas.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <button class="carrusel-flecha siguiente" type="button" data-siguiente aria-label="Siguiente">›</button>
+          <div class="carrusel-puntos" aria-label="Elegir imagen"></div>
+          <p class="sr-only" aria-live="polite" data-estado-carrusel></p>
+        </div>
       </div>
     </section>
 
@@ -329,6 +514,10 @@
     </section>
   </div>
 
-  <script src="script.js"></script>
+  <noscript>
+    <p class="aviso-noscript">El asistente necesita JavaScript. Mientras tanto, llámanos al
+      <a href="tel:7551234567">755 123 4567</a> y registramos tu cita.</p>
+  </noscript>
+  <script src="script.js?v=20261123"></script>
 </body>
 </html>

@@ -83,9 +83,26 @@ let paso = 'inicio';
 let borrador = {};
 let puentePublico = '';
 
+// Si la página se recarga, lo ya escrito no se pierde: queda en la sesión.
+const CLAVE_PROGRESO = 'govet_progreso_cita';
+
+function guardarProgreso() {
+  try { sessionStorage.setItem(CLAVE_PROGRESO, JSON.stringify({ paso, borrador })); }
+  catch (e) { /* algunos navegadores bloquean el almacenamiento */ }
+}
+function leerProgreso() {
+  try {
+    const guardado = sessionStorage.getItem(CLAVE_PROGRESO);
+    return guardado ? JSON.parse(guardado) : null;
+  } catch (e) { return null; }
+}
+function borrarProgreso() {
+  try { sessionStorage.removeItem(CLAVE_PROGRESO); } catch (e) { /* igual */ }
+}
+
 // La URL del túnel cambia en cada arranque: se lee de un archivo público y
 // mientras tanto se usa el puente local de la propia máquina.
-fetch('bridge-config.json', { cache: 'no-store' })
+fetch('bridge-config.json?v=' + Date.now(), { cache: 'no-store' })
   .then((respuesta) => respuesta.ok ? respuesta.json() : null)
   .then((config) => { if (config && config.url) puentePublico = config.url.replace(/\/$/, ''); })
   .catch(() => { puentePublico = ''; });
@@ -121,6 +138,7 @@ function pedirTexto(etiqueta, tipo) {
     chatEntrada.min = new Date().toISOString().slice(0, 10);
   }
   paso = etiqueta;
+  guardarProgreso();
   decir(tipo === 'date'
     ? '¿Para qué fecha? Usa el selector que aparece abajo.'
     : etiqueta === 'tutor'
@@ -140,6 +158,7 @@ function horasDisponibles() {
 
 function elegir(valor) {
   if (valor === 'inicio') { paso = 'inicio'; saludar(); return; }
+  if (valor === 'continuar') { continuar(); return; }
   if (valor === 'servicios') {
     servicios.forEach((s) => decir(s.codigo + ' · ' + s.nombre + ' · ' + s.precio + ' · ' + s.duracion));
     decir('Los precios y duraciones son los mismos de la sección Servicios.');
@@ -161,6 +180,7 @@ function elegir(valor) {
   }
   if (paso === 'servicio') {
     borrador.servicio = valor;
+    guardarProgreso();
     const elegido = servicios.find((s) => s.codigo === valor);
     decir('Anotado: ' + elegido.nombre + ' (' + elegido.precio + ').');
     pedirTexto('fecha', 'date');
@@ -169,11 +189,37 @@ function elegir(valor) {
   if (valor === 'confirmar') { enviarCita(); return; }
   if (valor === 'rehacer') {
     borrador = {};
+    borrarProgreso();
     decir('Vamos de nuevo.');
     paso = 'inicio';
     saludar();
     return;
   }
+}
+
+function continuar() {
+  if (paso === 'fecha') { pedirTexto('fecha', 'date'); return; }
+  if (paso === 'hora') {
+    decir('¿A qué hora?');
+    ofrecer(horasDisponibles().map((h) => ({ etiqueta: h, valor: h })));
+    return;
+  }
+  if (paso === 'tutor' || paso === 'mascota') {
+    pedirTexto(paso, 'text');
+    return;
+  }
+  if (paso === 'confirmar') {
+    const s = servicios.find((item) => item.codigo === borrador.servicio);
+    decir('Confirmo: ' + borrador.mascota + ', ' + borrador.tutor + ', ' + s.nombre
+      + ', el ' + borrador.fecha + ' a las ' + borrador.hora + '. Total ' + s.precio + '.');
+    ofrecer([
+      { etiqueta: 'Confirmar cita', valor: 'confirmar' },
+      { etiqueta: 'Empezar de nuevo', valor: 'rehacer' }
+    ]);
+    return;
+  }
+  paso = 'inicio';
+  saludar();
 }
 
 function saludar() {
@@ -196,13 +242,16 @@ chatForm.addEventListener('submit', (evento) => {
   if (paso === 'fecha') {
     borrador.fecha = texto;
     paso = 'hora';
+    guardarProgreso();
     decir('¿A qué hora?');
     ofrecer(horasDisponibles().map((h) => ({ etiqueta: h, valor: h })));
   } else if (paso === 'tutor') {
     borrador.tutor = texto;
+    guardarProgreso();
     pedirTexto('mascota', 'text');
   } else if (paso === 'mascota') {
     borrador.mascota = texto;
+    guardarProgreso();
     const s = servicios.find((item) => item.codigo === borrador.servicio);
     paso = 'confirmar';
     decir('Confirmo: ' + borrador.mascota + ', ' + borrador.tutor + ', ' + s.nombre
@@ -219,6 +268,7 @@ const elegirOriginal = elegir;
 elegir = function (valor) {
   if (paso === 'hora' && /^\d{2}:(00|30)$/.test(valor)) {
     borrador.hora = valor;
+    guardarProgreso();
     pedirTexto('tutor', 'text');
     return;
   }
@@ -242,26 +292,54 @@ async function enviarCita() {
     return;
   }
   decir('Mandando la cita a la agenda...');
+  // La misma clave acompaña a los reintentos: si la red se cae a mitad de
+  // camino, el puente no registra dos veces la misma cita.
+  if (!borrador.clave) {
+    borrador.clave = 'govet-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8);
+  }
+  guardarProgreso();
   const cuerpo = new URLSearchParams({
     tutor: borrador.tutor,
     mascota: borrador.mascota,
     servicio: borrador.servicio,
     fecha: borrador.fecha,
-    hora: borrador.hora
+    hora: borrador.hora,
+    clave: borrador.clave
   });
-  try {
-    const respuesta = await fetch(destino + '/api/citas', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
-      body: cuerpo.toString()
-    });
-    const resultado = await respuesta.json();
-    decir(resultado.mensaje);
-    if (resultado.ok) decir('El folio ya quedó registrado en el sistema de la clínica.');
-    ofrecer([{ etiqueta: 'Agendar otra cita', valor: 'rehacer' }, { etiqueta: 'Volver al inicio', valor: 'inicio' }]);
-  } catch (error) {
-    decir('No encontré el sistema GOVET encendido. Enciéndelo y vuelve a intentarlo, o llama al 755 123 4567.');
-    ofrecer([{ etiqueta: 'Reintentar', valor: 'confirmar' }]);
+  chatRespuestas.replaceChildren();
+
+  for (let intento = 0; intento < 3; intento++) {
+    const control = new AbortController();
+    const temporizador = setTimeout(() => control.abort(), 9000);
+    try {
+      const respuesta = await fetch(destino + '/api/citas', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+        body: cuerpo.toString(),
+        cache: 'no-store',
+        signal: control.signal
+      });
+      clearTimeout(temporizador);
+      const resultado = await respuesta.json();
+      decir(resultado.mensaje);
+      if (resultado.ok) {
+        decir('El folio ya quedó registrado en el sistema de la clínica.');
+        borrarProgreso();
+        ofrecer([{ etiqueta: 'Agendar otra cita', valor: 'rehacer' }, { etiqueta: 'Volver al inicio', valor: 'inicio' }]);
+      } else {
+        ofrecer([{ etiqueta: 'Reintentar', valor: 'confirmar' }, { etiqueta: 'Empezar de nuevo', valor: 'rehacer' }]);
+      }
+      return;
+    } catch (error) {
+      clearTimeout(temporizador);
+      if (intento === 2) {
+        decir('No encontré el sistema GOVET encendido. Enciéndelo y vuelve a intentarlo, o llama al 755 123 4567.');
+        ofrecer([{ etiqueta: 'Reintentar', valor: 'confirmar' }]);
+        return;
+      }
+      decir('No respondió; lo intento otra vez.');
+      await new Promise((resolver) => setTimeout(resolver, 500 * (intento + 1)));
+    }
   }
 }
 
@@ -269,7 +347,23 @@ function abrirChat() {
   chatPanel.hidden = false;
   chatAbrir.setAttribute('aria-expanded', 'true');
   chatAbrir.setAttribute('aria-label', 'Cerrar asistente GOVET');
-  if (!chatMensajes.childElementCount) saludar();
+  if (chatMensajes.childElementCount) return;
+  const guardado = leerProgreso();
+  if (!guardado || !guardado.borrador || !guardado.borrador.servicio) {
+    saludar();
+    return;
+  }
+  paso = guardado.paso || 'confirmar';
+  borrador = guardado.borrador;
+  const elegido = servicios.find((s) => s.codigo === borrador.servicio);
+  decir('Retomamos lo que dejaste: ' + borrador.mascota + ', ' + borrador.tutor
+    + ', ' + (elegido ? elegido.nombre : borrador.servicio)
+    + (borrador.fecha ? ', el ' + borrador.fecha : '')
+    + (borrador.hora ? ' a las ' + borrador.hora : '') + '.');
+  ofrecer([
+    { etiqueta: 'Seguir donde iba', valor: 'continuar' },
+    { etiqueta: 'Empezar de nuevo', valor: 'rehacer' }
+  ]);
 }
 function cerrarChat() {
   chatPanel.hidden = true;
@@ -282,4 +376,90 @@ chatAbrir.addEventListener('click', () => chatPanel.hidden ? abrirChat() : cerra
 chatCerrar.addEventListener('click', cerrarChat);
 document.addEventListener('keydown', (evento) => {
   if (evento.key === 'Escape' && !chatPanel.hidden) cerrarChat();
+});
+
+// Tarjetas de servicios: el botón o un clic en la tarjeta las volta.
+// El frente y el dorso se turnan también para quien lee la página con lector.
+document.querySelectorAll('.tarjeta-servicio').forEach((tarjeta) => {
+  const boton = tarjeta.querySelector('.girar');
+  const frente = tarjeta.querySelector('.cara.frente');
+  const dorso = tarjeta.querySelector('.cara.dorso');
+  const nombre = tarjeta.querySelector('h3').textContent.trim();
+
+  function voltear() {
+    const vuelta = tarjeta.classList.toggle('volteada');
+    boton.setAttribute('aria-pressed', String(vuelta));
+    boton.setAttribute('aria-label', (vuelta ? 'Ver frente de ' : 'Ver detalle de ') + nombre);
+    frente.setAttribute('aria-hidden', String(vuelta));
+    dorso.setAttribute('aria-hidden', String(!vuelta));
+  }
+
+  boton.addEventListener('click', (evento) => {
+    evento.stopPropagation();
+    voltear();
+  });
+  tarjeta.addEventListener('click', (evento) => {
+    if (evento.target.closest('a')) return;
+    voltear();
+  });
+});
+
+// Carruseles: flechas, puntos, teclado y deslizamiento. Se detienen al pasar
+// el ratón o al enfocar un control, y no avanzan si se pide menos movimiento.
+document.querySelectorAll('[data-carrusel]').forEach((carrusel) => {
+  const pista = carrusel.querySelector('.carrusel-pista');
+  const diapositivas = Array.from(carrusel.querySelectorAll('.carrusel-diapositiva'));
+  const puntosContenedor = carrusel.querySelector('.carrusel-puntos');
+  const estado = carrusel.querySelector('[data-estado-carrusel]');
+  if (!pista || diapositivas.length < 2) return;
+
+  let actual = 0;
+  const puntos = diapositivas.map((_, indice) => {
+    const punto = document.createElement('button');
+    punto.type = 'button';
+    punto.setAttribute('aria-label', 'Ir a la diapositiva ' + (indice + 1));
+    punto.addEventListener('click', () => ir(indice));
+    puntosContenedor.appendChild(punto);
+    return punto;
+  });
+
+  function ir(n) {
+    actual = (n + diapositivas.length) % diapositivas.length;
+    pista.style.transform = 'translateX(-' + (actual * 100) + '%)';
+    diapositivas.forEach((diapositiva, i) => diapositiva.setAttribute('aria-hidden', String(i !== actual)));
+    puntos.forEach((punto, i) => punto.setAttribute('aria-current', String(i === actual)));
+    estado.textContent = 'Diapositiva ' + (actual + 1) + ' de ' + diapositivas.length;
+  }
+
+  carrusel.querySelector('[data-anterior]').addEventListener('click', () => ir(actual - 1));
+  carrusel.querySelector('[data-siguiente]').addEventListener('click', () => ir(actual + 1));
+
+  let temporizador = null;
+  function detener() {
+    if (temporizador) { clearInterval(temporizador); temporizador = null; }
+  }
+  function arrancar() {
+    detener();
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    temporizador = setInterval(() => { if (!document.hidden) ir(actual + 1); }, 7000);
+  }
+  carrusel.addEventListener('mouseenter', detener);
+  carrusel.addEventListener('mouseleave', arrancar);
+  carrusel.addEventListener('focusin', detener);
+  carrusel.addEventListener('focusout', arrancar);
+  carrusel.addEventListener('keydown', (evento) => {
+    if (evento.key === 'ArrowLeft') { evento.preventDefault(); ir(actual - 1); }
+    if (evento.key === 'ArrowRight') { evento.preventDefault(); ir(actual + 1); }
+  });
+  let inicioX = null;
+  carrusel.addEventListener('pointerdown', (evento) => { inicioX = evento.clientX; });
+  carrusel.addEventListener('pointerup', (evento) => {
+    if (inicioX === null) return;
+    const diferencia = evento.clientX - inicioX;
+    if (Math.abs(diferencia) > 45) ir(actual + (diferencia < 0 ? 1 : -1));
+    inicioX = null;
+  });
+
+  ir(0);
+  arrancar();
 });

@@ -312,6 +312,101 @@ p { margin: 0 0 14px; }
 .video-marco summary { cursor: pointer; color: var(--teal); font-weight: 700; }
 .video-marco details[open] summary { color: var(--ambar); }
 .video-marco details p { margin: 8px 0 0; color: var(--muted); font-size: 0.86rem; }
+.btn-narizacion {
+  display: inline-block;
+  margin: 12px 6px 2px;
+  padding: 9px 14px;
+  min-height: 40px;
+  font: 700 0.86rem/1.2 var(--display);
+  color: var(--teal);
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  cursor: pointer;
+}
+.btn-narizacion:hover { color: var(--ambar); border-color: var(--ambar); }
+.btn-narizacion[aria-pressed="false"] { color: var(--muted); }
+
+/* ---------- Catálogo: búsqueda y tabla ---------- */
+.filtro-servicios {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 22px 0 4px;
+}
+.filtro-servicios label {
+  font: 700 0.78rem/1 var(--mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+.filtro-servicios input {
+  min-width: min(100%, 320px);
+  min-height: 44px;
+  padding: 10px 14px;
+  color: var(--texto);
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  font: 0.95rem/1.2 var(--display);
+}
+.filtro-servicios input::placeholder { color: var(--muted); }
+.tarjeta-servicio[hidden] { display: none !important; }
+.tabla-precios { margin-top: 30px; }
+.tabla-precios summary {
+  display: inline-block;
+  padding: 10px 16px;
+  min-height: 40px;
+  color: var(--ambar);
+  font-weight: 700;
+  cursor: pointer;
+  border-bottom: 1px dashed currentColor;
+}
+.tabla-precios table {
+  width: 100%;
+  margin-top: 14px;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.tabla-precios caption {
+  text-align: left;
+  color: var(--muted);
+  font-size: 0.84rem;
+  padding-bottom: 10px;
+}
+.tabla-precios th, .tabla-precios td {
+  padding: 11px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--borde);
+}
+.tabla-precios thead th {
+  color: var(--teal);
+  font: 700 0.76rem/1.2 var(--mono);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.tabla-precios tbody th { color: var(--ambar); font: 700 0.82rem/1.2 var(--mono); }
+.tabla-precios tbody td:last-child { color: var(--ambar); font-weight: 700; white-space: nowrap; }
+.tabla-precios tbody tr:hover { background: rgba(61, 214, 192, 0.06); }
+.checklist {
+  margin-top: 34px;
+  padding: 22px 26px;
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-left: 4px solid var(--teal);
+  border-radius: var(--radio);
+}
+.checklist h3 { margin: 6px 0 14px; }
+.checklist ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.checklist li { position: relative; padding-left: 28px; color: var(--muted); }
+.checklist li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--teal);
+  font-weight: 700;
+}
 
 /* ---------- Servicios: tarjetas con doble cara ---------- */
 .tarjetas-servicios {
@@ -883,6 +978,8 @@ p { margin: 0 0 14px; }
   .navegacion a { padding: 12px 8px; border-bottom: 1px solid var(--borde); }
   .btn-header { margin-left: 0; }
   .btn-flotante { display: flex; }
+  .filtro-servicios input { width: 100%; }
+  .tabla-precios { overflow-x: auto; }
 }
 
 @media (max-width: 560px) {
@@ -926,7 +1023,9 @@ p { margin: 0 0 14px; }
     box-shadow: none;
     background: #fff;
   }
-  .video-marco, .nota-mano, .pista-tarjetas, .girar, .cara.dorso, .carrusel, .aviso-noscript { display: none !important; }
+  .video-marco, .nota-mano, .pista-tarjetas, .girar, .cara.dorso, .carrusel, .aviso-noscript,
+  .btn-narizacion, .filtro-servicios, .tabla-precios summary { display: none !important; }
+  .tabla-precios > table { display: table !important; }
   .tarjeta-servicio { height: auto; perspective: none; }
   .tarjeta-inner { transform: none !important; height: auto; }
   .cara { position: static; backface-visibility: visible; }

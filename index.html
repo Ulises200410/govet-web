@@ -14,7 +14,7 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <link rel="icon" href="assets/logo_simbolo.png" type="image/png">
-  <link rel="stylesheet" href="styles.css?v=20261123b">
+  <link rel="stylesheet" href="styles.css?v=20261123d">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -44,6 +44,21 @@
       {"@type":"Question","name":"¿Cuánto dura cada servicio?","acceptedAnswer":{"@type":"Answer","text":"30, 20, 20, 60, 90 y 45 minutos, según el servicio."}},
       {"@type":"Question","name":"¿Qué datos quedan en la cita?","acceptedAnswer":{"@type":"Answer","text":"Folio, fecha y hora, tutor, mascota, veterinario, servicios y total."}},
       {"@type":"Question","name":"¿Puedo agendar desde el asistente de la página?","acceptedAnswer":{"@type":"Answer","text":"Sí, si el sistema GOVET está encendido; si no, el asistente da el teléfono."}}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Servicios de Veterinaria GOVET",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"item":{"@type":"Service","name":"Consulta general","description":"Evaluación clínica del paciente.","provider":{"@type":"VeterinaryCare","name":"Veterinaria GOVET"},"offers":{"@type":"Offer","price":"250","priceCurrency":"MXN"}}},
+      {"@type":"ListItem","position":2,"item":{"@type":"Service","name":"Vacunación","description":"Aplicación de vacuna y registro.","provider":{"@type":"VeterinaryCare","name":"Veterinaria GOVET"},"offers":{"@type":"Offer","price":"180","priceCurrency":"MXN"}}},
+      {"@type":"ListItem","position":3,"item":{"@type":"Service","name":"Desparasitación","description":"Tratamiento interno y externo.","provider":{"@type":"VeterinaryCare","name":"Veterinaria GOVET"},"offers":{"@type":"Offer","price":"150","priceCurrency":"MXN"}}},
+      {"@type":"ListItem","position":4,"item":{"@type":"Service","name":"Baño y estilizado","description":"Higiene y corte de pelo.","provider":{"@type":"VeterinaryCare","name":"Veterinaria GOVET"},"offers":{"@type":"Offer","price":"300","priceCurrency":"MXN"}}},
+      {"@type":"ListItem","position":5,"item":{"@type":"Service","name":"Cirugía menor","description":"Procedimiento ambulatorio.","provider":{"@type":"VeterinaryCare","name":"Veterinaria GOVET"},"offers":{"@type":"Offer","price":"850","priceCurrency":"MXN"}}},
+      {"@type":"ListItem","position":6,"item":{"@type":"Service","name":"Ultrasonido","description":"Estudio de diagnóstico por imagen.","provider":{"@type":"VeterinaryCare","name":"Veterinaria GOVET"},"offers":{"@type":"Offer","price":"600","priceCurrency":"MXN"}}}
     ]
   }
   </script>
@@ -184,13 +199,22 @@
           <a class="btn btn-primario" href="tel:7551234567">Agendar cita</a>
         </div>
         <figure class="video-marco">
-          <video controls preload="none" poster="assets/vet_consulta.svg" aria-label="Vídeo: qué hace la Veterinaria GOVET">
+          <video controls preload="none" poster="assets/vet_consulta.svg" aria-label="Vídeo narrado: qué hace la Veterinaria GOVET">
             <source src="assets/govet_explicacion.webm" type="video/webm">
+            <track kind="captions" src="assets/govet_explicacion.vtt" srclang="es" label="Español" default>
             Tu navegador no puede mostrar este vídeo. Puedes leer la transcripción abajo.
           </video>
+          <audio id="narizacion" hidden preload="metadata">
+            <source src="assets/govet_narizacion.wav" type="audio/wav">
+            <track kind="captions" src="assets/govet_explicacion.vtt" srclang="es" label="Español">
+          </audio>
+          <button class="btn-narizacion" type="button" id="btnNarizacion" aria-pressed="true">
+            Narización: activa
+          </button>
           <figcaption>
             <details>
               <summary>Leer el texto del vídeo</summary>
+              <p>La narización va al mismo ritmo que las imágenes. Si no quieres escucharla, baja el volumen o apágala con el botón de arriba; el texto íntegro está aquí.</p>
               <p>1. Veterinaria GOVET, en Tlapa de Comonfort, Guerrero.</p>
               <p>2. Seis servicios: consulta, vacunación, desparasitación, baño, cirugía menor y ultrasonido.</p>
               <p>3. Agenda por teléfono al 755 123 4567: te damos hora y veterinario.</p>
@@ -206,6 +230,11 @@
         <p class="etiqueta">Lo que hacemos</p>
         <h2>Servicios y precios</h2>
         <p class="intro">Precios en pesos. El tiempo que aparece en cada servicio es el que suele tardar. En total son 6 servicios, desde $150, con 44 minutos de duración promedio.</p>
+        <div class="filtro-servicios">
+          <label for="filtroServicio">Buscar en el catálogo</label>
+          <input id="filtroServicio" type="search" placeholder="Nombre o clave, por ejemplo SER-03" autocomplete="off">
+          <p class="sr-only" aria-live="polite" id="estadoFiltroServicios"></p>
+        </div>
         <p class="pista-tarjetas"><span class="pista-icono" aria-hidden="true">↻</span> Toca una tarjeta para ver el detalle. El precio y la duración siguen a la vista.</p>
         <div class="tarjetas-servicios">
           <article class="tarjeta-servicio">
@@ -317,6 +346,24 @@
             <button class="girar" type="button" aria-label="Ver detalle de Ultrasonido" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.7 6.3A8 8 0 1 0 20 12h-2a6 6 0 1 1-1.8-4.3L14 10h6V4z"/></svg></button>
           </article>
         </div>
+
+        <details class="tabla-precios">
+          <summary>Ver los seis servicios en una tabla</summary>
+          <table>
+            <caption>Precios y duración estimada de los servicios de Veterinaria GOVET</caption>
+            <thead>
+              <tr><th scope="col">Clave</th><th scope="col">Servicio</th><th scope="col">Qué incluye</th><th scope="col">Duración</th><th scope="col">Precio</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">SER-01</th><td>Consulta general</td><td>Evaluación clínica del paciente</td><td>30 min</td><td>$250</td></tr>
+              <tr><th scope="row">SER-02</th><td>Vacunación</td><td>Aplicación de vacuna y registro</td><td>20 min</td><td>$180</td></tr>
+              <tr><th scope="row">SER-03</th><td>Desparasitación</td><td>Tratamiento interno y externo</td><td>20 min</td><td>$150</td></tr>
+              <tr><th scope="row">SER-04</th><td>Baño y estilizado</td><td>Higiene y corte de pelo</td><td>60 min</td><td>$300</td></tr>
+              <tr><th scope="row">SER-05</th><td>Cirugía menor</td><td>Procedimiento ambulatorio</td><td>90 min</td><td>$850</td></tr>
+              <tr><th scope="row">SER-06</th><td>Ultrasonido</td><td>Estudio de diagnóstico por imagen</td><td>45 min</td><td>$600</td></tr>
+            </tbody>
+          </table>
+        </details>
       </div>
     </section>
 
@@ -355,6 +402,15 @@
           <li><span class="numero">3</span><div><h3>Recibe tu hora</h3><p>La cita queda registrada en la agenda con fecha, hora y veterinario asignado.</p></div></li>
           <li><span class="numero">4</span><div><h3>Recoge tu comprobante</h3><p>Al finalizar te entregamos un PDF con folio, servicios y total.</p></div></li>
         </ol>
+        <div class="checklist">
+          <p class="etiqueta">Antes de llegar</p>
+          <h3>Tres cosas que ayudan</h3>
+          <ul>
+            <li>Ten a la mano el nombre con el que está registrado el tutor.</li>
+            <li>Si tu mascota ya tiene historial aquí, menciónalo al llegar.</li>
+            <li>Si traes su cartilla de vacunación, llévala contigo.</li>
+          </ul>
+        </div>
         <figure class="ilustracion ilustracion-detalle">
           <img src="assets/clinica_detalle.svg" alt="Ilustración de un rincón de la clínica con un gato y un maletín médico" width="1200" height="675" loading="lazy">
           <figcaption>Tu mascota y su historial ya están en la agenda cuando llegas.</figcaption>
@@ -366,7 +422,7 @@
       <div class="contenedor">
         <p class="etiqueta">Así se ve por dentro</p>
         <h2>Tres cosas que siempre están claras</h2>
-        <div class="carrusel carrusel-galeria" data-carrusel aria-label="Imágenes de la clínica y su agenda">
+        <div class="carrusel carrusel-galeria" data-carrusel aria-label="Recorrido por la clínica y su agenda">
           <button class="carrusel-flecha anterior" type="button" data-anterior aria-label="Anterior">‹</button>
           <div class="carrusel-ventana">
             <div class="carrusel-pista">
@@ -518,6 +574,6 @@
     <p class="aviso-noscript">El asistente necesita JavaScript. Mientras tanto, llámanos al
       <a href="tel:7551234567">755 123 4567</a> y registramos tu cita.</p>
   </noscript>
-  <script src="script.js?v=20261123b"></script>
+  <script src="script.js?v=20261123d"></script>
 </body>
 </html>

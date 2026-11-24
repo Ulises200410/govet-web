@@ -469,3 +469,88 @@ document.querySelectorAll('[data-carrusel]').forEach((carrusel) => {
   ir(0);
   arrancar();
 });
+
+// El vídeo explicativo es mudo por diseño: la voz vive en un archivo aparte y
+// va pegada al reproductor para que se vea y se escuche como una sola pieza.
+const videoExplicativo = document.querySelector('#como-trabajamos video');
+const narizacion = document.getElementById('narizacion');
+const btnNarizacion = document.getElementById('btnNarizacion');
+
+if (videoExplicativo && narizacion && btnNarizacion) {
+  let narizacionActiva = true;
+
+  function puedeSincronizar() {
+    return narizacion.readyState >= 1 && Number.isFinite(narizacion.duration);
+  }
+  function arrancarVoz() {
+    if (!narizacionActiva) return;
+    if (puedeSincronizar()) {
+      narizacion.currentTime = Math.min(videoExplicativo.currentTime, narizacion.duration);
+    } else {
+      narizacion.addEventListener('loadedmetadata', () => {
+        if (!videoExplicativo.paused && narizacionActiva) {
+          narizacion.currentTime = Math.min(videoExplicativo.currentTime, narizacion.duration);
+        }
+      }, { once: true });
+    }
+    const reproduccion = narizacion.play();
+    if (reproduccion && reproduccion.catch) reproduccion.catch(() => {});
+  }
+
+  videoExplicativo.addEventListener('play', () => {
+    if (!videoExplicativo.paused) arrancarVoz();
+  });
+  videoExplicativo.addEventListener('pause', () => narizacion.pause());
+  videoExplicativo.addEventListener('seeked', () => {
+    if (narizacionActiva && puedeSincronizar()) {
+      narizacion.currentTime = Math.min(videoExplicativo.currentTime, narizacion.duration);
+    }
+  });
+  videoExplicativo.addEventListener('timeupdate', () => {
+    if (!narizacionActiva || !puedeSincronizar()) return;
+    if (Math.abs(narizacion.currentTime - videoExplicativo.currentTime) > 0.7) {
+      narizacion.currentTime = Math.min(videoExplicativo.currentTime, narizacion.duration);
+    }
+  });
+  narizacion.addEventListener('ended', () => {
+    if (!videoExplicativo.paused) videoExplicativo.pause();
+  });
+
+  btnNarizacion.addEventListener('click', () => {
+    narizacionActiva = !narizacionActiva;
+    btnNarizacion.setAttribute('aria-pressed', String(narizacionActiva));
+    btnNarizacion.textContent = narizacionActiva ? 'Narización: activa' : 'Narización: apagada';
+    if (narizacionActiva) {
+      if (videoExplicativo.paused) {
+        const reproduccion = videoExplicativo.play();
+        if (reproduccion && reproduccion.catch) reproduccion.catch(() => {});
+      }
+      arrancarVoz();
+    } else {
+      narizacion.pause();
+    }
+  });
+}
+
+// Buscar por nombre o clave para no recorrer las seis tarjetas a ojo.
+const filtroServicio = document.getElementById('filtroServicio');
+const estadoFiltroServicios = document.getElementById('estadoFiltroServicios');
+const tarjetasCatalogo = Array.from(document.querySelectorAll('.tarjeta-servicio'));
+
+if (filtroServicio && estadoFiltroServicios) {
+  filtroServicio.addEventListener('input', () => {
+    const texto = filtroServicio.value.trim().toLowerCase();
+    let visibles = 0;
+    tarjetasCatalogo.forEach((tarjeta) => {
+      const nombre = tarjeta.querySelector('h3').textContent.toLowerCase();
+      const clave = tarjeta.querySelector('.codigo').textContent.toLowerCase();
+      const mostrar = !texto || nombre.includes(texto) || clave.includes(texto);
+      tarjeta.hidden = !mostrar;
+      if (mostrar) visibles++;
+    });
+    estadoFiltroServicios.textContent = !texto ? ''
+      : visibles === 1 ? 'Un servicio coincide con esa búsqueda.'
+      : visibles ? visibles + ' servicios coinciden con esa búsqueda.'
+      : 'Ningún servicio coincide con esa búsqueda.';
+  });
+}

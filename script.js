@@ -530,6 +530,35 @@ if (videoExplicativo && narizacion && btnNarizacion) {
       narizacion.pause();
     }
   });
+
+  // Los capítulos mueven vídeo y voz al mismo segundo; el botón de ampliar
+  // deja el reproductor a lo ancho sin cambiar ningún control.
+  const capitulos = Array.from(document.querySelectorAll('[data-capitulo]'));
+  const marco = document.querySelector('.video-marco');
+  const ampliar = document.getElementById('btnAmpliar');
+
+  capitulos.forEach((boton) => {
+    boton.addEventListener('click', () => {
+      const segundo = Number(boton.dataset.capitulo);
+      videoExplicativo.currentTime = segundo;
+      if (puedeSincronizar()) narizacion.currentTime = Math.min(segundo, narizacion.duration);
+      capitulos.forEach((otro) => otro.setAttribute('aria-current', String(otro === boton)));
+      if (videoExplicativo.paused) {
+        const reproduccion = videoExplicativo.play();
+        if (reproduccion && reproduccion.catch) reproduccion.catch(() => {});
+      } else {
+        arrancarVoz();
+      }
+    });
+  });
+
+  if (ampliar && marco) {
+    ampliar.addEventListener('click', () => {
+      const grande = marco.classList.toggle('amplio');
+      ampliar.setAttribute('aria-pressed', String(grande));
+      ampliar.textContent = grande ? 'Volver al tamaño normal' : 'Ampliar';
+    });
+  }
 }
 
 // Buscar por nombre o clave para no recorrer las seis tarjetas a ojo.

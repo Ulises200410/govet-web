@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Dibujo vectorial de los cuatro pasos para agendar una cita">
+  <rect width="1200" height="675" fill="#0B1320"/>
+  <g stroke="#14243A" stroke-width="2">
+    <path d="M0 135h1200M0 270h1200M0 405h1200M0 540h1200"/>
+  </g>
+  <path d="M120 338h960" stroke="#3DD6C0" stroke-width="4" opacity="0.55"/>
+  <path d="M120 338h960" stroke="#F2B24C" stroke-width="4" stroke-dasharray="10 16" opacity="0.7"/>
+
+  <g transform="translate(90 250)">
+    <circle cx="60" cy="88" r="56" fill="#14243A" stroke="#3DD6C0" stroke-width="4"/>
+    <text x="60" y="104" fill="#F2B24C" font-family="Consolas, monospace" font-size="46" font-weight="700" text-anchor="middle">1</text>
+    <path d="M42 184h36a12 12 0 0 1 12 12v18a12 12 0 0 1-12 12h-6l-8 16-8-16h-14a12 12 0 0 1-12-12v-18a12 12 0 0 1 12-12z" fill="#EAF2FA"/>
+    <path d="M50 200h20" stroke="#0B1320" stroke-width="5" stroke-linecap="round"/>
+    <text x="60" y="286" fill="#EAF2FA" font-family="Segoe UI, sans-serif" font-size="27" font-weight="700" text-anchor="middle">Llama</text>
+    <text x="60" y="318" fill="#9CB0C6" font-family="Segoe UI, sans-serif" font-size="19" text-anchor="middle">755 123 4567</text>
+  </g>
+
+  <g transform="translate(370 210)">
+    <circle cx="60" cy="88" r="56" fill="#14243A" stroke="#3DD6C0" stroke-width="4"/>
+    <text x="60" y="104" fill="#F2B24C" font-family="Consolas, monospace" font-size="46" font-weight="700" text-anchor="middle">2</text>
+    <rect x="26" y="180" width="68" height="88" rx="9" fill="#F2B24C"/>
+    <rect x="36" y="192" width="48" height="64" rx="4" fill="#1B2F49"/>
+    <path d="M46 208h28M46 224h28M46 240h18" stroke="#F2B24C" stroke-width="5" stroke-linecap="round"/>
+    <text x="60" y="326" fill="#EAF2FA" font-family="Segoe UI, sans-serif" font-size="27" font-weight="700" text-anchor="middle">Elige</text>
+    <text x="60" y="358" fill="#9CB0C6" font-family="Segoe UI, sans-serif" font-size="19" text-anchor="middle">precio y duración</text>
+  </g>
+
+  <g transform="translate(650 250)">
+    <circle cx="60" cy="88" r="56" fill="#14243A" stroke="#3DD6C0" stroke-width="4"/>
+    <text x="60" y="104" fill="#F2B24C" font-family="Consolas, monospace" font-size="46" font-weight="700" text-anchor="middle">3</text>
+    <circle cx="60" cy="226" r="44" fill="#EAF2FA"/>
+    <path d="M60 200v28l18 12" fill="none" stroke="#0B1320" stroke-width="7" stroke-linecap="round"/>
+    <rect x="104" y="176" width="54" height="30" rx="8" fill="#3DD6C0"/>
+    <text x="131" y="196" fill="#0B1320" font-family="Consolas, monospace" font-size="16" font-weight="700" text-anchor="middle">10:30</text>
+    <text x="60" y="326" fill="#EAF2FA" font-family="Segoe UI, sans-serif" font-size="27" font-weight="700" text-anchor="middle">Tu hora</text>
+    <text x="60" y="358" fill="#9CB0C6" font-family="Segoe UI, sans-serif" font-size="19" text-anchor="middle">fecha y veterinario</text>
+  </g>
+
+  <g transform="translate(930 210)">
+    <circle cx="60" cy="88" r="56" fill="#14243A" stroke="#3DD6C0" stroke-width="4"/>
+    <text x="60" y="104" fill="#F2B24C" font-family="Consolas, monospace" font-size="46" font-weight="700" text-anchor="middle">4</text>
+    <path d="M24 180h72v96H24z" fill="#EAF2FA"/>
+    <path d="M84 180l12 14v82H84z" fill="#C9D7E4"/>
+    <path d="M36 202h44M36 218h44M36 234h30" stroke="#0B1320" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="58" cy="304" r="18" fill="#F2B24C"/>
+    <text x="58" y="310" fill="#0B1320" font-family="Consolas, monospace" font-size="13" font-weight="700" text-anchor="middle">PDF</text>
+    <text x="60" y="386" fill="#EAF2FA" font-family="Segoe UI, sans-serif" font-size="27" font-weight="700" text-anchor="middle">Comprobante</text>
+    <text x="60" y="418" fill="#9CB0C6" font-family="Segoe UI, sans-serif" font-size="19" text-anchor="middle">folio y total</text>
+  </g>
+</svg>

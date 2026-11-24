@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Portada dibujada del vídeo: cuatro escenas de la clínica">
+  <rect width="1200" height="675" fill="#0B1320"/>
+  <g stroke="#14243A" stroke-width="2">
+    <path d="M0 90h1200M0 180h1200M0 270h1200M0 360h1200M0 450h1200M0 540h1200M0 630h1200"/>
+    <path d="M100 0v675M200 0v675M300 0v675M400 0v675M500 0v675M600 0v675M700 0v675M800 0v675M900 0v675M1000 0v675M1100 0v675"/>
+  </g>
+  <circle cx="960" cy="300" r="230" fill="#14243A"/>
+  <path d="M960 210c-34 0-60 26-60 58 0 8 2 15 5 22l-38 66h186l-38-66c3-7 5-14 5-22 0-32-26-58-60-58z" fill="#3DD6C0" opacity="0.35"/>
+  <circle cx="960" cy="268" r="34" fill="#F2B24C" opacity="0.8"/>
+
+  <path d="M86 96h1040" stroke="#3DD6C0" stroke-width="3"/>
+  <text x="86" y="150" fill="#F2B24C" font-family="Consolas, monospace" font-size="22" letter-spacing="4">GOVET · 00:12</text>
+  <text x="86" y="238" fill="#EAF2FA" font-family="Segoe UI, sans-serif" font-size="62" font-weight="700">Así trabajamos</text>
+  <text x="86" y="292" fill="#9CB0C6" font-family="Segoe UI, sans-serif" font-size="26">Cuatro escenas, contadas con voz</text>
+
+  <g transform="translate(86 360)">
+    <rect x="0" y="0" width="232" height="150" rx="10" fill="#1B2F49" stroke="#2C4562" stroke-width="2"/>
+    <rect x="0" y="0" width="232" height="6" rx="3" fill="#3DD6C0"/>
+    <text x="18" y="44" fill="#F2B24C" font-family="Consolas, monospace" font-size="19" font-weight="700">01 · CLÍNICA</text>
+    <text x="18" y="80" fill="#EAF2FA" font-family="Segoe UI, sans-serif" font-size="20">Tlapa de Comonfort</text>
+    <text x="18" y="112" fill="#9CB0C6" font-family="Segoe UI, sans-serif" font-size="16">00:00 — 00:02</text>
+
+    <rect x="256" y="0" width="232" height="150" rx="10" fill="#1B2F49" stroke="#2C4562" stroke-width="2"/>
+    <rect x="256" y="0" width="232" height="6" rx="3" fill="#3DD6C0"/>
+    <text x="274" y="44" fill="#F2B24C" font-family="Consolas, monospace" font-size="19" font-weight="700">02 · SERVICIOS</text>
+    <text x="274" y="80" fill="#EAF2FA" font-family="Segoe UI, sans-serif" font-size="20">Seis servicios</text>
+    <text x="274" y="112" fill="#9CB0C6" font-family="Segoe UI, sans-serif" font-size="16">00:02 — 00:07</text>
+
+    <rect x="512" y="0" width="232" height="150" rx="10" fill="#1B2F49" stroke="#2C4562" stroke-width="2"/>
+    <rect x="512" y="0" width="232" height="6" rx="3" fill="#F2B24C"/>
+    <text x="530" y="44" fill="#F2B24C" font-family="Consolas, monospace" font-size="19" font-weight="700">03 · CITA</text>
+    <text x="530" y="80" fill="#EAF2FA" font-family="Segoe UI, sans-serif" font-size="20">755 123 4567</text>
+    <text x="530" y="112" fill="#9CB0C6" font-family="Segoe UI, sans-serif" font-size="16">00:07 — 00:10</text>
+
+    <rect x="768" y="0" width="232" height="150" rx="10" fill="#1B2F49" stroke="#2C4562" stroke-width="2"/>
+    <rect x="768" y="0" width="232" height="6" rx="3" fill="#F2B24C"/>
+    <text x="786" y="44" fill="#F2B24C" font-family="Consolas, monospace" font-size="19" font-weight="700">04 · PDF</text>
+    <text x="786" y="80" fill="#EAF2FA" font-family="Segoe UI, sans-serif" font-size="20">Folio y total</text>
+    <text x="786" y="112" fill="#9CB0C6" font-family="Segoe UI, sans-serif" font-size="16">00:10 — 00:12</text>
+  </g>
+
+  <path d="M86 560h914" stroke="#2C4562" stroke-width="2"/>
+  <text x="86" y="604" fill="#F2B24C" font-family="Segoe UI, sans-serif" font-size="20">Dibujos hechos a mano · narración en español · sin material de archivo</text>
+</svg>

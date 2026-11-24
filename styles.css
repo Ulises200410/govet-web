@@ -264,6 +264,37 @@ p { margin: 0 0 14px; }
   font-size: 0.9rem;
 }
 
+/* ---------- Índice rápido ---------- */
+.indice-rapido {
+  background: var(--superficie);
+  border-bottom: 1px solid var(--borde);
+  padding: 26px 0 30px;
+}
+.indice-cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 22px;
+  margin-bottom: 16px;
+}
+.indice-cabecera .etiqueta { margin: 0; }
+.indice-cabecera p:last-child { margin: 0; color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chips a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 8px 15px;
+  border: 1px solid var(--borde);
+  border-radius: 999px;
+  background: var(--tarjeta);
+  color: var(--texto);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.chips a::before { content: "↗"; color: var(--teal); margin-right: 8px; }
+.chips a:hover { border-color: var(--ambar); color: var(--ambar); }
+
 /* ---------- Vídeo explicativo ---------- */
 .seccion-video {
   background-color: var(--fondo);
@@ -326,6 +357,49 @@ p { margin: 0 0 14px; }
 }
 .btn-narizacion:hover { color: var(--ambar); border-color: var(--ambar); }
 .btn-narizacion[aria-pressed="false"] { color: var(--muted); }
+.video-controles { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 10px; }
+.btn-narizacion { margin: 0; }
+.btn-ampliar {
+  min-height: 40px;
+  padding: 9px 14px;
+  font: 700 0.86rem/1.2 var(--display);
+  color: var(--ambar);
+  background: transparent;
+  border: 1px dashed var(--ambar);
+  border-radius: var(--radio);
+  cursor: pointer;
+}
+.btn-ampliar:hover { background: rgba(242, 178, 76, 0.1); }
+.capitulos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 14px; }
+.capitulos button {
+  min-height: 74px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-align: left;
+  color: var(--texto);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-left: 3px solid var(--borde);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.capitulos button:hover { border-left-color: var(--ambar); }
+.capitulos button[aria-current="true"] { border-left-color: var(--teal); background: var(--tarjeta); }
+.capitulo-num { font: 700 0.75rem var(--mono); letter-spacing: 0.08em; color: var(--ambar); }
+.capitulos small { font: 0.72rem var(--mono); color: var(--muted); }
+.ficha-video {
+  margin: 12px 6px 0;
+  font: 0.82rem/1.5 var(--mono);
+  color: var(--muted);
+}
+.video-marco.amplio { transform: none; max-width: 980px; margin: 0 auto; grid-column: 1 / -1; }
+.ilustracion-equipo, .ilustracion-pasos, .ilustracion-comprobante { margin-top: 24px; }
+.ilustracion-equipo img, .ilustracion-pasos img, .ilustracion-comprobante img {
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+}
 
 /* ---------- Catálogo: búsqueda y tabla ---------- */
 .filtro-servicios {
@@ -747,7 +821,7 @@ p { margin: 0 0 14px; }
 }
 .site-footer img { filter: brightness(0) invert(1); opacity: 0.8; }
 .footer-inner p { margin: 0; }
-.footer-nav { display: flex; gap: 16px; margin-left: auto; }
+.footer-nav { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-left: auto; max-width: 560px; justify-content: flex-end; }
 .footer-nav a { color: var(--muted); text-decoration: none; }
 .footer-nav a:hover { color: var(--ambar); }
 .copyright { width: 100%; color: #7E93A6; font-size: 0.8rem; }
@@ -980,6 +1054,8 @@ p { margin: 0 0 14px; }
   .btn-flotante { display: flex; }
   .filtro-servicios input { width: 100%; }
   .tabla-precios { overflow-x: auto; }
+  .capitulos { grid-template-columns: repeat(2, 1fr); }
+  .footer-nav { justify-content: flex-start; }
 }
 
 @media (max-width: 560px) {
@@ -1016,7 +1092,8 @@ p { margin: 0 0 14px; }
     --ambar: #8A5A00;
   }
   body { background: #fff; color: #111; }
-  .site-header, .btn-flotante, .btn-arriba, .footer-nav, .marca, .hero-video, .ilustracion, .chat { display: none !important; }
+  .site-header, .btn-flotante, .btn-arriba, .footer-nav, .marca, .hero-video, .ilustracion, .chat,
+  .indice-rapido, .capitulos, .video-controles, .ficha-video { display: none !important; }
   .hero { background: #fff; color: #111; }
   .hero h1, .hero .eyebrow, .lead { color: #111; }
   .dato, .tarjeta-servicio, .tarjeta-vet, .pasos li, .acordeon details, .datos-contacto {

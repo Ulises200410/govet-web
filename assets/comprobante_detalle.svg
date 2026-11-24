@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Dibujo vectorial de un comprobante con folio, servicios y total">
+  <rect width="1200" height="675" fill="#0B1320"/>
+  <circle cx="880" cy="220" r="230" fill="#14243A"/>
+  <g stroke="#1B2F49" stroke-width="2">
+    <path d="M0 120h1200M0 240h1200M0 360h1200M0 480h1200M0 600h1200"/>
+  </g>
+
+  <g transform="translate(250 86)">
+    <rect x="0" y="0" width="520" height="510" rx="14" fill="#EAF2FA"/>
+    <rect x="0" y="0" width="520" height="86" rx="14" fill="#14243A"/>
+    <rect x="0" y="60" width="520" height="26" fill="#14243A"/>
+    <circle cx="54" cy="43" r="24" fill="#3DD6C0"/>
+    <path d="M54 30c-8 0-14 6-14 13 0 6 5 10 11 10 2 0 3-1 3-3s-1-3-3-3c-3 0-5-2-5-5s3-5 8-5 8 2 8 5c0 3-2 5-5 5-2 0-3 1-3 3s1 3 3 3c6 0 11-4 11-10 0-7-6-13-14-13z" fill="#0B1320"/>
+    <text x="92" y="52" fill="#EAF2FA" font-family="Segoe UI, sans-serif" font-size="30" font-weight="700">Veterinaria GOVET</text>
+
+    <text x="40" y="128" fill="#0B1320" font-family="Consolas, monospace" font-size="17" font-weight="700" letter-spacing="1">FOLIO</text>
+    <rect x="40" y="140" width="150" height="34" rx="6" fill="#F2B24C"/>
+    <text x="115" y="164" fill="#0B1320" font-family="Consolas, monospace" font-size="20" font-weight="700" text-anchor="middle">— — —</text>
+    <text x="236" y="128" fill="#0B1320" font-family="Consolas, monospace" font-size="17" font-weight="700" letter-spacing="1">FECHA Y HORA</text>
+    <path d="M236 160h244" stroke="#9CB0C6" stroke-width="3"/>
+    <text x="236" y="190" fill="#0B1320" font-family="Consolas, monospace" font-size="17" font-weight="700" letter-spacing="1">TUTOR / MASCOTA</text>
+    <path d="M236 222h244" stroke="#9CB0C6" stroke-width="3"/>
+
+    <path d="M40 258h440" stroke="#9CB0C6" stroke-width="2"/>
+    <text x="40" y="284" fill="#0B1320" font-family="Consolas, monospace" font-size="16" font-weight="700" letter-spacing="1">SERVICIO</text>
+    <text x="360" y="284" fill="#0B1320" font-family="Consolas, monospace" font-size="16" font-weight="700" letter-spacing="1">IMPORTE</text>
+    <path d="M40 296h440" stroke="#9CB0C6" stroke-width="2"/>
+    <path d="M40 320h230" stroke="#9CB0C6" stroke-width="9" stroke-linecap="round"/>
+    <path d="M360 320h60" stroke="#9CB0C6" stroke-width="9" stroke-linecap="round"/>
+    <path d="M40 350h190" stroke="#9CB0C6" stroke-width="9" stroke-linecap="round"/>
+    <path d="M360 350h60" stroke="#9CB0C6" stroke-width="9" stroke-linecap="round"/>
+
+    <path d="M40 394h440" stroke="#9CB0C6" stroke-width="2"/>
+    <text x="40" y="432" fill="#0B1320" font-family="Segoe UI, sans-serif" font-size="24" font-weight="700">Total</text>
+    <rect x="356" y="406" width="124" height="36" rx="6" fill="#F2B24C"/>
+    <text x="418" y="430" fill="#0B1320" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="middle">$ — — —</text>
+
+    <circle cx="436" cy="470" r="42" fill="none" stroke="#3DD6C0" stroke-width="4"/>
+    <text x="436" y="476" fill="#0F766E" font-family="Consolas, monospace" font-size="15" font-weight="700" text-anchor="middle">PDF</text>
+  </g>
+
+  <g transform="translate(858 470)">
+    <rect x="0" y="0" width="250" height="92" rx="10" fill="#1B2F49" stroke="#3DD6C0" stroke-width="2"/>
+    <text x="20" y="36" fill="#3DD6C0" font-family="Consolas, monospace" font-size="17" font-weight="700">Folio</text>
+    <text x="20" y="68" fill="#9CB0C6" font-family="Segoe UI, sans-serif" font-size="18">Número de la cita</text>
+  </g>
+</svg>

@@ -14,7 +14,7 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <link rel="icon" href="assets/logo_simbolo.png" type="image/png">
-  <link rel="stylesheet" href="styles.css?v=20261123d">
+  <link rel="stylesheet" href="styles.css?v=20261123e">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -75,6 +75,7 @@
         <span></span><span></span><span></span>
       </button>
       <nav class="navegacion" id="navegacion" aria-label="Navegación principal">
+        <a href="#indice">Índice</a>
         <a href="#servicios">Servicios</a>
         <a href="#equipo">Equipo</a>
         <a href="#como-agendar">Cómo agendar</a>
@@ -115,6 +116,27 @@
           <div class="dato"><strong>2</strong><span>veterinarios en activo</span></div>
           <div class="dato"><strong>1</strong><span>clínica, aquí en Tlapa</span></div>
         </div>
+      </div>
+    </section>
+
+    <section class="indice-rapido" id="indice" aria-label="Índice de la página">
+      <div class="contenedor">
+        <div class="indice-cabecera">
+          <p class="etiqueta">Índice rápido</p>
+          <p>Todo lo que hay aquí, en un solo vistazo. Elige y te llevo directo.</p>
+        </div>
+        <nav class="chips" aria-label="Ir a una sección">
+          <a href="#nosotros">Quiénes somos</a>
+          <a href="#vistazo">Servicios de un vistazo</a>
+          <a href="#como-trabajamos">Vídeo narrado</a>
+          <a href="#servicios">Precios y detalle</a>
+          <a href="#equipo">Equipo</a>
+          <a href="#como-agendar">Cómo agendar</a>
+          <a href="#galeria">Recorrido visual</a>
+          <a href="#expediente">Qué queda registrado</a>
+          <a href="#preguntas">Preguntas frecuentes</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
       </div>
     </section>
 
@@ -199,7 +221,7 @@
           <a class="btn btn-primario" href="tel:7551234567">Agendar cita</a>
         </div>
         <figure class="video-marco">
-          <video controls preload="none" poster="assets/vet_consulta.svg" aria-label="Vídeo narrado: qué hace la Veterinaria GOVET">
+          <video controls preload="none" poster="assets/video_portada.svg" aria-label="Vídeo narrado: qué hace la Veterinaria GOVET">
             <source src="assets/govet_explicacion.webm" type="video/webm">
             <track kind="captions" src="assets/govet_explicacion.vtt" srclang="es" label="Español" default>
             Tu navegador no puede mostrar este vídeo. Puedes leer la transcripción abajo.
@@ -208,9 +230,29 @@
             <source src="assets/govet_narizacion.wav" type="audio/wav">
             <track kind="captions" src="assets/govet_explicacion.vtt" srclang="es" label="Español">
           </audio>
-          <button class="btn-narizacion" type="button" id="btnNarizacion" aria-pressed="true">
-            Narización: activa
-          </button>
+          <div class="video-controles">
+            <button class="btn-narizacion" type="button" id="btnNarizacion" aria-pressed="true">
+              Narización: activa
+            </button>
+            <button class="btn-ampliar" type="button" id="btnAmpliar" aria-pressed="false">
+              Ampliar
+            </button>
+          </div>
+          <div class="capitulos" role="group" aria-label="Capítulos del vídeo">
+            <button type="button" data-capitulo="0" aria-current="true">
+              <span class="capitulo-num">01</span><span>Clínica</span><small>00:00</small>
+            </button>
+            <button type="button" data-capitulo="2.1">
+              <span class="capitulo-num">02</span><span>Servicios</span><small>00:02</small>
+            </button>
+            <button type="button" data-capitulo="7.2">
+              <span class="capitulo-num">03</span><span>La cita</span><small>00:07</small>
+            </button>
+            <button type="button" data-capitulo="10.7">
+              <span class="capitulo-num">04</span><span>Comprobante</span><small>00:10</small>
+            </button>
+          </div>
+          <p class="ficha-video">Doce segundos · cuatro escenas dibujadas a mano · narración y subtítulos en español.</p>
           <figcaption>
             <details>
               <summary>Leer el texto del vídeo</summary>
@@ -371,6 +413,10 @@
       <div class="contenedor">
         <p class="etiqueta">Quién te atiende</p>
         <h2>Nuestro equipo</h2>
+        <figure class="ilustracion ilustracion-equipo">
+          <img src="assets/equipo_clinica.svg" alt="Dibujo vectorial de dos veterinarios en consulta, uno con estetoscopio y otro con una tabla" width="1200" height="675" loading="lazy">
+          <figcaption>Dos formas de atender: revisar y dejar constancia de lo que se hizo.</figcaption>
+        </figure>
         <div class="tarjetas-equipo">
           <article class="tarjeta-vet">
             <div class="iniciales" aria-hidden="true">ME</div>
@@ -396,6 +442,10 @@
       <div class="contenedor">
         <p class="etiqueta">Así funciona</p>
         <h2>Cómo agendar tu cita</h2>
+        <figure class="ilustracion ilustracion-pasos">
+          <img src="assets/pasos_agenda.svg" alt="Dibujo vectorial de los cuatro pasos: llamar, elegir servicio, recibir hora y obtener comprobante" width="1200" height="675" loading="lazy">
+          <figcaption>Llama, elige, recibe tu hora y al final te llevas el comprobante.</figcaption>
+        </figure>
         <ol class="pasos">
           <li><span class="numero">1</span><div><h3>Llama a la clínica</h3><p>Marca al <a href="tel:7551234567">755 123 4567</a> y dinos para qué necesitas la cita.</p></div></li>
           <li><span class="numero">2</span><div><h3>Elige el servicio</h3><p>Te indicamos el precio y la duración estimada del servicio que necesita tu mascota.</p></div></li>
@@ -452,6 +502,10 @@
         <p class="etiqueta">Tu historial</p>
         <h2>Qué queda registrado</h2>
         <p class="intro">Cada cita se guarda en el sistema de la clínica con estos datos, y con ellos se arma el comprobante en PDF.</p>
+        <figure class="ilustracion ilustracion-comprobante">
+          <img src="assets/comprobante_detalle.svg" alt="Dibujo vectorial de un comprobante con folio, servicios, total y sello de PDF" width="1200" height="675" loading="lazy">
+          <figcaption>El folio identifica la cita; el detalle y el total salen en el mismo documento.</figcaption>
+        </figure>
         <ul class="lista-datos">
           <li><strong>Tutor y mascota</strong><span>Quién trae al paciente y a quién se atiende.</span></li>
           <li><strong>Fecha y hora</strong><span>El espacio reservado en la agenda.</span></li>
@@ -539,7 +593,12 @@
       <img src="assets/logo_simbolo.png" alt="" width="40" height="40" aria-hidden="true">
       <p>Veterinaria GOVET · Tlapa de Comonfort, Guerrero</p>
       <nav class="footer-nav" aria-label="Enlaces del pie">
+        <a href="#indice">Índice</a>
         <a href="#servicios">Servicios</a>
+        <a href="#equipo">Equipo</a>
+        <a href="#como-agendar">Cómo agendar</a>
+        <a href="#galeria">Recorrido</a>
+        <a href="#expediente">Expediente</a>
         <a href="#preguntas">Preguntas</a>
         <a href="#contacto">Contacto</a>
       </nav>
@@ -574,6 +633,6 @@
     <p class="aviso-noscript">El asistente necesita JavaScript. Mientras tanto, llámanos al
       <a href="tel:7551234567">755 123 4567</a> y registramos tu cita.</p>
   </noscript>
-  <script src="script.js?v=20261123d"></script>
+  <script src="script.js?v=20261123e"></script>
 </body>
 </html>

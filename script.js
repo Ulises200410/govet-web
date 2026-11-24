@@ -385,6 +385,7 @@ document.querySelectorAll('.tarjeta-servicio').forEach((tarjeta) => {
   const frente = tarjeta.querySelector('.cara.frente');
   const dorso = tarjeta.querySelector('.cara.dorso');
   const nombre = tarjeta.querySelector('h3').textContent.trim();
+  dorso.inert = true;
 
   function voltear() {
     const vuelta = tarjeta.classList.toggle('volteada');
@@ -392,6 +393,8 @@ document.querySelectorAll('.tarjeta-servicio').forEach((tarjeta) => {
     boton.setAttribute('aria-label', (vuelta ? 'Ver frente de ' : 'Ver detalle de ') + nombre);
     frente.setAttribute('aria-hidden', String(vuelta));
     dorso.setAttribute('aria-hidden', String(!vuelta));
+    frente.inert = vuelta;
+    dorso.inert = !vuelta;
   }
 
   boton.addEventListener('click', (evento) => {
@@ -426,7 +429,10 @@ document.querySelectorAll('[data-carrusel]').forEach((carrusel) => {
   function ir(n) {
     actual = (n + diapositivas.length) % diapositivas.length;
     pista.style.transform = 'translateX(-' + (actual * 100) + '%)';
-    diapositivas.forEach((diapositiva, i) => diapositiva.setAttribute('aria-hidden', String(i !== actual)));
+    diapositivas.forEach((diapositiva, i) => {
+      diapositiva.setAttribute('aria-hidden', String(i !== actual));
+      diapositiva.inert = i !== actual;
+    });
     puntos.forEach((punto, i) => punto.setAttribute('aria-current', String(i === actual)));
     estado.textContent = 'Diapositiva ' + (actual + 1) + ' de ' + diapositivas.length;
   }

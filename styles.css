@@ -839,12 +839,16 @@ p { margin: 0 0 14px; }
 .carrusel-flecha.siguiente { right: -14px; }
 .carrusel-puntos { display: flex; justify-content: center; gap: 8px; margin-top: 16px; }
 .carrusel-puntos button {
-  width: 11px; height: 11px; padding: 0; border-radius: 50%;
-  border: 1px solid var(--borde); background: transparent; cursor: pointer;
+  width: 26px; height: 26px; padding: 0; border: 0; border-radius: 50%;
+  background: transparent; cursor: pointer; display: grid; place-items: center;
+}
+.carrusel-puntos button::before {
+  content: ""; width: 11px; height: 11px; border-radius: 50%;
+  border: 1px solid var(--borde); background: transparent;
   transition: background 140ms ease, transform 140ms ease;
 }
-.carrusel-puntos button[aria-current="true"] {
-  background: var(--ambar); border-color: var(--ambar); transform: scale(1.2);
+.carrusel-puntos button[aria-current="true"]::before {
+  background: var(--ambar); border-color: var(--ambar); transform: scale(1.15);
 }
 .aviso-noscript {
   background: var(--ambar); color: var(--fondo);

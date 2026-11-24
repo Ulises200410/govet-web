@@ -19,7 +19,7 @@ Nombres sugeridos:
 - `govetclinica.com`
 - `govet.mx` o `veterinariagovet.com.mx` (si quieres uno mexicano)
 
-**Importante:** compr solo el dominio. No contrates hosting, la página ya está alojada gratis.
+**Importante:** compra solo el dominio. No contrates hosting: la página ya está alojada y no cuesta nada.
 
 ## 2. Lo que tienes que hacer en la página del proveedor
 
@@ -52,4 +52,4 @@ Los cambios de DNS tardan entre unos minutos y 24 horas en propagarse. Yo te con
 
 ---
 
-**Respuesta corta:** cómprame un dominio, dime cuál es, y te dejo la página abierta en ese dominio. El hospedaje ya está pagado (gratis) y no cuesta nada extra.
+**Respuesta corta:** cómprame un dominio, dime cuál compraste y te dejo la página abriendo ahí. El hospedaje ya está resuelto; no hay que pagar nada más.

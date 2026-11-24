@@ -9,7 +9,7 @@
   <circle cx="960" cy="268" r="34" fill="#F2B24C" opacity="0.8"/>
 
   <path d="M86 96h1040" stroke="#3DD6C0" stroke-width="3"/>
-  <text x="86" y="150" fill="#F2B24C" font-family="Consolas, monospace" font-size="22" letter-spacing="4">GOVET · 00:12</text>
+  <text x="86" y="150" fill="#F2B24C" font-family="Consolas, monospace" font-size="22" letter-spacing="4">GOVET · 00:16</text>
   <text x="86" y="238" fill="#EAF2FA" font-family="Segoe UI, sans-serif" font-size="62" font-weight="700">Así trabajamos</text>
   <text x="86" y="292" fill="#9CB0C6" font-family="Segoe UI, sans-serif" font-size="26">Cuatro escenas, contadas con voz</text>
 

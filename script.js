@@ -478,6 +478,9 @@ const btnNarizacion = document.getElementById('btnNarizacion');
 
 if (videoExplicativo && narizacion && btnNarizacion) {
   let narizacionActiva = true;
+  // La voz salió apresurada: bajamos vídeo y voz al mismo ritmo para entenderse.
+  videoExplicativo.playbackRate = 0.75;
+  narizacion.playbackRate = 0.75;
 
   function puedeSincronizar() {
     return narizacion.readyState >= 1 && Number.isFinite(narizacion.duration);

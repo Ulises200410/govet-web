@@ -14,7 +14,7 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <link rel="icon" href="assets/logo_simbolo.png" type="image/png">
-  <link rel="stylesheet" href="styles.css?v=20261123e">
+  <link rel="stylesheet" href="styles.css?v=20261124">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -43,7 +43,8 @@
       {"@type":"Question","name":"¿Dónde están ubicados?","acceptedAnswer":{"@type":"Answer","text":"Tlapa de Comonfort, Guerrero."}},
       {"@type":"Question","name":"¿Cuánto dura cada servicio?","acceptedAnswer":{"@type":"Answer","text":"30, 20, 20, 60, 90 y 45 minutos, según el servicio."}},
       {"@type":"Question","name":"¿Qué datos quedan en la cita?","acceptedAnswer":{"@type":"Answer","text":"Folio, fecha y hora, tutor, mascota, veterinario, servicios y total."}},
-      {"@type":"Question","name":"¿Puedo agendar desde el asistente de la página?","acceptedAnswer":{"@type":"Answer","text":"Sí, si el sistema GOVET está encendido; si no, el asistente da el teléfono."}}
+      {"@type":"Question","name":"¿Puedo agendar desde el asistente de la página?","acceptedAnswer":{"@type":"Answer","text":"Sí, si el sistema GOVET está encendido; si no, el asistente da el teléfono."}},
+       {"@type":"Question","name":"¿Puedo escribir por WhatsApp?","acceptedAnswer":{"@type":"Answer","text":"Sí, al número 755 123 4567. Si no contesta, llámanos para agendar."}}
     ]
   }
   </script>
@@ -141,16 +142,18 @@
     </section>
 
     <section class="seccion" id="nosotros">
-      <div class="contenedor">
-        <p class="etiqueta">Quiénes somos</p>
-        <h2>La clínica de tu barrio, con todo en orden.</h2>
-        <div class="dos-columnas">
-          <p>Estamos en Tlapa de Comonfort, Guerrero, y atendemos perros, gatos y aves de compañía. Sabemos que detrás de cada mascota hay una persona que quiere una respuesta clara: qué le pasa, cuánto cuesta y cuándo puede entrar.</p>
-          <p>Por eso usamos una agenda que acomoda las citas por hora y un expediente donde queda el historial de cada paciente. Cuando llegas, tu mascota y su información ya están en el sistema; cuando sales, tienes un comprobante con folio, servicios y total. Nada se anota en una libreta y nada se pierde entre hojas.</p>
+      <div class="contenedor dos-bloques">
+        <div class="texto-bloque">
+          <p class="etiqueta">Quiénes somos</p>
+          <h2>La clínica de tu barrio, con todo en orden.</h2>
+          <div class="dos-columnas">
+            <p>Estamos en Tlapa de Comonfort, Guerrero, y atendemos perros, gatos y aves de compañía. Sabemos que detrás de cada mascota hay una persona que quiere una respuesta clara: qué le pasa, cuánto cuesta y cuándo puede entrar.</p>
+            <p>Por eso usamos una agenda que acomoda las citas por hora y un expediente donde queda el historial de cada paciente. Cuando llegas, tu mascota y su información ya están en el sistema; cuando sales, tienes un comprobante con folio, servicios y total. Nada se anota en una libreta y nada se pierde entre hojas.</p>
+          </div>
+          <ul class="especies" aria-label="Tipos de mascotas que atendemos">
+            <li>Perros</li><li>Gatos</li><li>Aves de compañía</li>
+          </ul>
         </div>
-        <ul class="especies" aria-label="Tipos de mascotas que atendemos">
-          <li>Perros</li><li>Gatos</li><li>Aves de compañía</li>
-        </ul>
         <figure class="ilustracion">
           <img src="assets/vet_consulta.svg" alt="Ilustración de un veterinario revisando a un perro durante la consulta" width="1200" height="675" loading="lazy">
           <figcaption>Una revisión tranquila, con el servicio y el costo claros desde el principio.</figcaption>
@@ -252,7 +255,7 @@
               <span class="capitulo-num">04</span><span>Comprobante</span><small>00:10</small>
             </button>
           </div>
-          <p class="ficha-video">Doce segundos · cuatro escenas dibujadas a mano · narración y subtítulos en español.</p>
+          <p class="ficha-video">Unos dieciséis segundos · cuatro escenas dibujadas a mano · narración y subtítulos en español.</p>
           <figcaption>
             <details>
               <summary>Leer el texto del vídeo</summary>
@@ -442,10 +445,6 @@
       <div class="contenedor">
         <p class="etiqueta">Así funciona</p>
         <h2>Cómo agendar tu cita</h2>
-        <figure class="ilustracion ilustracion-pasos">
-          <img src="assets/pasos_agenda.svg" alt="Dibujo vectorial de los cuatro pasos: llamar, elegir servicio, recibir hora y obtener comprobante" width="1200" height="675" loading="lazy">
-          <figcaption>Llama, elige, recibe tu hora y al final te llevas el comprobante.</figcaption>
-        </figure>
         <ol class="pasos">
           <li><span class="numero">1</span><div><h3>Llama a la clínica</h3><p>Marca al <a href="tel:7551234567">755 123 4567</a> y dinos para qué necesitas la cita.</p></div></li>
           <li><span class="numero">2</span><div><h3>Elige el servicio</h3><p>Te indicamos el precio y la duración estimada del servicio que necesita tu mascota.</p></div></li>
@@ -461,10 +460,6 @@
             <li>Si traes su cartilla de vacunación, llévala contigo.</li>
           </ul>
         </div>
-        <figure class="ilustracion ilustracion-detalle">
-          <img src="assets/clinica_detalle.svg" alt="Ilustración de un rincón de la clínica con un gato y un maletín médico" width="1200" height="675" loading="lazy">
-          <figcaption>Tu mascota y su historial ya están en la agenda cuando llegas.</figcaption>
-        </figure>
       </div>
     </section>
 
@@ -498,22 +493,24 @@
     </section>
 
     <section class="seccion seccion-clara" id="expediente">
-      <div class="contenedor">
-        <p class="etiqueta">Tu historial</p>
-        <h2>Qué queda registrado</h2>
-        <p class="intro">Cada cita se guarda en el sistema de la clínica con estos datos, y con ellos se arma el comprobante en PDF.</p>
+      <div class="contenedor dos-bloques">
+        <div class="texto-bloque">
+          <p class="etiqueta">Tu historial</p>
+          <h2>Qué queda registrado</h2>
+          <p class="intro">Cada cita se guarda en el sistema de la clínica con estos datos, y con ellos se arma el comprobante en PDF.</p>
+          <ul class="lista-datos">
+            <li><strong>Tutor y mascota</strong><span>Quién trae al paciente y a quién se atiende.</span></li>
+            <li><strong>Fecha y hora</strong><span>El espacio reservado en la agenda.</span></li>
+            <li><strong>Veterinario</strong><span>El profesional asignado a la consulta.</span></li>
+            <li><strong>Servicios y cantidades</strong><span>Lo aplicado, con su precio unitario y subtotal.</span></li>
+            <li><strong>Total y estado</strong><span>Lo cobrado y en qué punto va la cita.</span></li>
+            <li><strong>Folio</strong><span>El número que identifica la cita y el comprobante.</span></li>
+          </ul>
+        </div>
         <figure class="ilustracion ilustracion-comprobante">
           <img src="assets/comprobante_detalle.svg" alt="Dibujo vectorial de un comprobante con folio, servicios, total y sello de PDF" width="1200" height="675" loading="lazy">
           <figcaption>El folio identifica la cita; el detalle y el total salen en el mismo documento.</figcaption>
         </figure>
-        <ul class="lista-datos">
-          <li><strong>Tutor y mascota</strong><span>Quién trae al paciente y a quién se atiende.</span></li>
-          <li><strong>Fecha y hora</strong><span>El espacio reservado en la agenda.</span></li>
-          <li><strong>Veterinario</strong><span>El profesional asignado a la consulta.</span></li>
-          <li><strong>Servicios y cantidades</strong><span>Lo aplicado, con su precio unitario y subtotal.</span></li>
-          <li><strong>Total y estado</strong><span>Lo cobrado y en qué punto va la cita.</span></li>
-          <li><strong>Folio</strong><span>El número que identifica la cita y el comprobante.</span></li>
-        </ul>
       </div>
     </section>
 
@@ -557,6 +554,10 @@
             <summary>¿Puedo agendar desde el asistente de la página?</summary>
             <p>Sí, si el sistema GOVET está encendido: te devuelve el folio. Si no, el asistente te pasa el teléfono.</p>
           </details>
+          <details>
+            <summary>¿Puedo escribir por WhatsApp?</summary>
+            <p>Sí, al mismo número, el 755 123 4567. Si no contesta, llámanos y registramos tu cita.</p>
+          </details>
         </div>
       </div>
     </section>
@@ -572,7 +573,10 @@
           <p><strong>Teléfono</strong><a href="tel:7551234567">755 123 4567</a></p>
           <p><strong>Dirección</strong>Tlapa de Comonfort, Guerrero</p>
           <p><strong>RFC</strong>GOVET-2026-01</p>
-          <a class="btn btn-primario" href="tel:7551234567">Llamar ahora</a>
+          <div class="contacto-botones">
+            <a class="btn btn-whatsapp" href="https://wa.me/527551234567?text=Hola%20GOVET%2C%20quisiera%20agendar%20una%20cita" target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp a Veterinaria GOVET">Escribir por WhatsApp</a>
+            <a class="btn btn-primario" href="tel:7551234567">Llamar ahora</a>
+          </div>
         </address>
       </div>
     </section>
@@ -582,6 +586,11 @@
   <a class="btn-flotante" href="tel:7551234567" aria-label="Llamar a Veterinaria GOVET">
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.2 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.8c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.2 1.1L6.6 10.8z"/></svg>
     <span>Llamar</span>
+  </a>
+
+  <a class="btn-flotante btn-flotante-wa" href="https://wa.me/527551234567?text=Hola%20GOVET%2C%20quisiera%20agendar%20una%20cita" target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp a Veterinaria GOVET">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1s-.7.8-.8 1c-.2.2-.3.2-.6.1a6.6 6.6 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.6c-.1-.2 0-.4.1-.5l.4-.5.3-.5v-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3s-.8.8-.8 1.9.8 2.2.9 2.4c.1.2 1.6 2.4 3.8 3.4.5.2 1 .4 1.3.5.6.2 1.1.1 1.5.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/></svg>
+    <span>WhatsApp</span>
   </a>
 
   <button class="btn-arriba" type="button" aria-label="Volver al inicio">
@@ -633,6 +642,6 @@
     <p class="aviso-noscript">El asistente necesita JavaScript. Mientras tanto, llámanos al
       <a href="tel:7551234567">755 123 4567</a> y registramos tu cita.</p>
   </noscript>
-  <script src="script.js?v=20261123e"></script>
+  <script src="script.js?v=20261124"></script>
 </body>
 </html>
